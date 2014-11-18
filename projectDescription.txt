@@ -1,0 +1,29 @@
+1. Project Title: 3D Flappy Bird
+
+2. Group Members: Jacob McCanty and Mark Kuczmarski
+
+3. A Brief Description of the project:
+3D Flappy Bird
+view points: side view (traditional flappy bird) and an "over the shoulder" view (follow bird up and down)
+
+Animation: flapping wings
+
+Sound: flap of the wings and smack when it hits the pipe and a ping when it scores a pipe
+
+Lighting: over the shoulder: direct light from a "sun" and ambient light
+
+Font: score
+
+textures: the ground and pipes, and skybox
+
+Aesthetic appeal: best looking flappy bird game ever
+
+4. Class Description
+List and describe each of the classes you intend to implement for your project.
+
+Bird: represents the bird made from multiple shapes
+Pipe:  A pipe that is 2 cylinders
+World:  The world that the bird will be in
+GravityController: A controller to control the gravity
+WorldController: To scroll the world around the bird
+Possibly others...
