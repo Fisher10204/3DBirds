@@ -48,6 +48,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kuczmamaLab9", "kuczmamaLab
 		{7CFB5C97-484D-4D87-8C7B-440F79394E04} = {7CFB5C97-484D-4D87-8C7B-440F79394E04}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlappyBird", "FlappyBird\FlappyBird.vcxproj", "{FFACC680-70E0-4B42-99DF-48F4518D8AF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CFB5C97-484D-4D87-8C7B-440F79394E04} = {7CFB5C97-484D-4D87-8C7B-440F79394E04}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -94,6 +99,10 @@ Global
 		{0FBD39A2-FD77-4465-BEFA-0D67D141322E}.Debug|Win32.Build.0 = Debug|Win32
 		{0FBD39A2-FD77-4465-BEFA-0D67D141322E}.Release|Win32.ActiveCfg = Release|Win32
 		{0FBD39A2-FD77-4465-BEFA-0D67D141322E}.Release|Win32.Build.0 = Release|Win32
+		{FFACC680-70E0-4B42-99DF-48F4518D8AF5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FFACC680-70E0-4B42-99DF-48F4518D8AF5}.Debug|Win32.Build.0 = Debug|Win32
+		{FFACC680-70E0-4B42-99DF-48F4518D8AF5}.Release|Win32.ActiveCfg = Release|Win32
+		{FFACC680-70E0-4B42-99DF-48F4518D8AF5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
