@@ -1,0 +1,28 @@
+﻿Build started 11/10/2014 5:09:55 PM.
+     1>Project "C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\kuczmamaLab3\kuczmamaLab3.vcxproj" on node 7 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt FigureFive.cpp FigureFour.cpp FigureOne.cpp FigureSeven.cpp FigureSix.cpp FigureThree.cpp FigureTwo.cpp kuczmamaLab3.cpp
+         kuczmamaLab3.cpp
+         FigureTwo.cpp
+         FigureThree.cpp
+         FigureSix.cpp
+         FigureSeven.cpp
+         FigureOne.cpp
+         FigureFour.cpp
+         FigureFive.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\Debug\kuczmamaLab3.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Lib glew32.lib freeglut.lib OpenGlCse386.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\Debug\kuczmamaLab3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\Debug\kuczmamaLab3.lib" /MACHINE:X86 Debug\FigureFive.obj
+         Debug\FigureFour.obj
+         Debug\FigureOne.obj
+         Debug\FigureSeven.obj
+         Debug\FigureSix.obj
+         Debug\FigureThree.obj
+         Debug\FigureTwo.obj
+         Debug\kuczmamaLab3.obj
+         kuczmamaLab3.vcxproj -> C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\Debug\kuczmamaLab3.exe
+     1>Done Building Project "C:\Users\kuczmama\Downloads\OpenGlCse386 (1)\OpenGlCse386\kuczmamaLab3\kuczmamaLab3.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:29.36

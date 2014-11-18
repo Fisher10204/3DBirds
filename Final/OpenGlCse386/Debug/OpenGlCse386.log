@@ -1,0 +1,38 @@
+﻿Build started 11/17/2014 4:15:01 PM.
+     1>Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         OpenGlCse386.vcxproj -> C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib
+       PostBuildEvent:
+         copy "*.h" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\Include\
+         copy "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\"Lib\OpenGlCse386.lib"
+         :VCEnd
+         BuildShaderProgram.h
+         Bullet.h
+         BulletController.h
+         Cone.h
+         Controller.h
+         Cube.h
+         Cylinder.h
+         Floor.h
+         Floor2.h
+         glutBase.h
+         GlutObject.h
+         Material.h
+         OpenGLApplicationBase.h
+         OrbitController.h
+         SharedGeneralLighting.h
+         SharedProjectionAndViewing.h
+         SpaceShip.h
+         Sphere.h
+         SpinnerController.h
+         textureCoordinates.h
+         vertexStructs.h
+         VisualObject.h
+         WayPointController.h
+                23 file(s) copied.
+                 1 file(s) copied.
+     1>Done Building Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.30
