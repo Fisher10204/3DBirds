@@ -82,6 +82,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="kuczmamaLab10.cpp" />
+    <ClCompile Include="Pyramid.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pcVsUniViewProj.vert" />
+    <None Include="pfixed-function-shared-lighting-phong.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pyramid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="earth.bmp" />
+    <Image Include="test.bmp" />
+    <Image Include="wall.bmp" />
+    <Image Include="wood-Sphere.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

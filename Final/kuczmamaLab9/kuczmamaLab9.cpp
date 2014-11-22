@@ -20,10 +20,10 @@
 #include "SpaceShip.h"
 
 
-struct kuczmamaLab9 : public OpenGLApplicationBase{
+struct FlappyBird : public OpenGLApplicationBase{
 	//VisualObject *floor, *pyramid0, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
 
-	kuczmamaLab9() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
+	FlappyBird() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
 		floor = new Floor2();
 
@@ -270,16 +270,16 @@ void SpecialKeyboardCB(int Key, int x, int y){
 	switch (Key) {
 
 	case GLUT_KEY_RIGHT:
-		((kuczmamaLab9*)s_pOpenGLAppBase)->rotationY--;
+		((FlappyBird*)s_pOpenGLAppBase)->rotationY--;
 		break;
 	case GLUT_KEY_LEFT:
-		((kuczmamaLab9*)s_pOpenGLAppBase)->rotationY++;
+		((FlappyBird*)s_pOpenGLAppBase)->rotationY++;
 		break;
 	case GLUT_KEY_UP:
-		((kuczmamaLab9*)s_pOpenGLAppBase)->rotationX++;
+		((FlappyBird*)s_pOpenGLAppBase)->rotationX++;
 		break;
 	case GLUT_KEY_DOWN:
-		((kuczmamaLab9*)s_pOpenGLAppBase)->rotationX--;
+		((FlappyBird*)s_pOpenGLAppBase)->rotationX--;
 		break;
 	default:
 		//OpenGLApplicationBase::KeyboardCB(Key, x, y);
@@ -287,7 +287,7 @@ void SpecialKeyboardCB(int Key, int x, int y){
 	}
 }
 
-void kuczmamaLab9::KeyboardCB(unsigned char key, int x, int y){
+void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
 	case 'w': case 'W':
@@ -368,11 +368,11 @@ void kuczmamaLab9::KeyboardCB(unsigned char key, int x, int y){
 }
 
 void viewMenu(int value){
-	((kuczmamaLab9*)s_pOpenGLAppBase)->view = value;
+	((FlappyBird*)s_pOpenGLAppBase)->view = value;
 	cout << "Changing view " << value << endl;
 }//end figureMenu
 
-GLuint kuczmamaLab9::createViewMenu(){
+GLuint FlappyBird::createViewMenu(){
 	GLuint menuId = glutCreateMenu(viewMenu);
 	// Specify menu items and their integer identifiers
 	glutAddMenuEntry("Default", 0);
@@ -390,6 +390,6 @@ GLuint kuczmamaLab9::createViewMenu(){
 int main(int argc, char** argv){
 	GLUTBaseInit(argc, argv);
 	GLUTBaseCreateWindow( "CSE 386 Lab 5" );
-	kuczmamaLab9 pApp;
+	FlappyBird pApp;
 	GLUTBaseRunApplication(&pApp);
 }
