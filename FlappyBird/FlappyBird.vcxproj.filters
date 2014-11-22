@@ -30,6 +30,9 @@
     <Image Include="..\..\..\..\Desktop\eye.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="feather.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pyramid.cpp">

@@ -393,7 +393,7 @@ GLuint FlappyBird::createViewMenu(){
 
 int main(int argc, char** argv){
 	GLUTBaseInit(argc, argv);
-	GLUTBaseCreateWindow( "CSE 386 Lab 10" );
+	GLUTBaseCreateWindow( "Flappy Bird" );
 	FlappyBird pApp;
 	GLUTBaseRunApplication(&pApp);
 }

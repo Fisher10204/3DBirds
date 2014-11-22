@@ -81,6 +81,7 @@
   <ItemGroup>
     <Image Include="..\..\..\..\Desktop\eye.bmp" />
     <Image Include="earth.bmp" />
+    <Image Include="feather.bmp" />
     <Image Include="test.bmp" />
     <Image Include="wall.bmp" />
     <Image Include="wood-Sphere.bmp" />
