@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="BirdController.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
     <ClCompile Include="Pyramid.cpp" />
   </ItemGroup>
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bird.h" />
+    <ClInclude Include="BirdController.h" />
     <ClInclude Include="Pyramid.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

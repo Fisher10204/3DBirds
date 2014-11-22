@@ -20,19 +20,21 @@
 #include "SpaceShip.h"
 #include "Wall.h"
 #include "Bird.h"
-
+#include "BirdController.h"
 
 struct FlappyBird : public OpenGLApplicationBase{
-	//VisualObject *floor, *pyramid0, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
+	//VisualObject *floor, *bird, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
 
 	FlappyBird() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
 		floor = new Floor2();
 
-		pyramid0 = new Bird();
-		pyramid0->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-		pyramid0->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
-		pyramid0->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+		bird = new Bird();
+		bird->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		bird->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
+		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
+		bird->addController(new BirdController());
+		//bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		pyramid1 = new Sphere();
 		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
@@ -57,7 +59,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		pyramid4->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 		pyramid4->addController(new WayPointController(waypoints, 1.5f));
 		addChild(floor);
-		addChild(pyramid0);
+		addChild(bird);
 		addChild(pyramid1);
 		addChild(pyramid2);
 		addChild(pyramid3);
@@ -78,7 +80,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		projectionAndViewing.setUniformBlockForShader(shaderProgram);
 		generalLighting.setUniformBlockForShader( shaderProgram );
 		floor->setShader(shaderProgram);
-		pyramid0->setShader(shaderProgram);
+		bird->setShader(shaderProgram);
 		pyramid1->setShader(shaderProgram);
 		pyramid2->setShader(shaderProgram);
 		pyramid3->setShader(shaderProgram);
@@ -248,7 +250,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 
 private:
 	Floor2* floor;
-	VisualObject* pyramid0;
+	VisualObject* bird;
 	VisualObject* pyramid1;
 	VisualObject* pyramid2;
 	VisualObject* pyramid3;
@@ -325,10 +327,10 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 		generalLighting.setEnabled( GL_LIGHT_THREE, spOn );
 		break;
 	case '0':
-		if(pyramid0->getParent() == NULL ){
-			this->addChild(pyramid0);
+		if(bird->getParent() == NULL ){
+			this->addChild(bird);
 		} else {
-			pyramid0->detachFromParent();
+			bird->detachFromParent();
 		}
 		break;
 	case '1':
