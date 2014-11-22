@@ -1,0 +1,22 @@
+﻿Build started 11/19/2014 5:25:42 PM.
+     1>Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\kuczmamaLab5\kuczmamaLab5.vcxproj" on node 8 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt kuczmamaLab5.cpp Pyramid.cpp
+         Pyramid.cpp
+         kuczmamaLab5.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab5.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Lib glew32.lib freeglut.lib OpenGlCse386.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab5.lib" /MACHINE:X86 Debug\kuczmamaLab5.obj
+         Debug\Pyramid.obj
+     1>OpenGlCse386.lib(BuildShaderProgram.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(BuildShaderProgram.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+     1>OpenGlCse386.lib(Floor.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Floor.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+     1>OpenGlCse386.lib(glutBase.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(glutBase.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+     1>OpenGlCse386.lib(OpenGLApplicationBase.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(OpenGLApplicationBase.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+     1>OpenGlCse386.lib(SharedProjectionAndViewing.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(SharedProjectionAndViewing.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+     1>OpenGlCse386.lib(VisualObject.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(VisualObject.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
+         kuczmamaLab5.vcxproj -> C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab5.exe
+     1>Done Building Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\kuczmamaLab5\kuczmamaLab5.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:43.35

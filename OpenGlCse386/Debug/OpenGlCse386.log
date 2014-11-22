@@ -1,0 +1,66 @@
+﻿Build started 11/19/2014 5:55:27 PM.
+     1>Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Sphere.cpp
+         Sphere.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib" /NOLOGO Debug\bitmap_class.obj
+         Debug\BuildShaderProgram.obj
+         Debug\BulletController.obj
+         Debug\Cone.obj
+         Debug\Controller.obj
+         Debug\Cube.obj
+         Debug\Cylinder.obj
+         Debug\Floor.obj
+         Debug\Floor2.obj
+         Debug\glutBase.obj
+         Debug\GlutObject.obj
+         Debug\Material.obj
+         Debug\OpenGLApplicationBase.obj
+         Debug\OrbitController.obj
+         Debug\SharedGeneralLighting.obj
+         Debug\SharedProjectionAndViewing.obj
+         Debug\SpaceShip.obj
+         Debug\Sphere.obj
+         Debug\SpinnerController.obj
+         Debug\textureCoordinates.obj
+         Debug\VisualObject.obj
+         Debug\Wall.obj
+         Debug\WayPointController.obj
+         OpenGlCse386.vcxproj -> C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib
+       PostBuildEvent:
+         copy "*.h" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\Include\
+         copy "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\"Lib\OpenGlCse386.lib"
+         :VCEnd
+         bitmap_class.h
+         BuildShaderProgram.h
+         Bullet.h
+         BulletController.h
+         Cone.h
+         Controller.h
+         Cube.h
+         Cylinder.h
+         Floor.h
+         Floor2.h
+         glutBase.h
+         GlutObject.h
+         Material.h
+         OpenGLApplicationBase.h
+         OrbitController.h
+         SharedGeneralLighting.h
+         SharedProjectionAndViewing.h
+         SpaceShip.h
+         Sphere.h
+         SpinnerController.h
+         textureCoordinates.h
+         vertexStructs.h
+         VisualObject.h
+         Wall.h
+         WayPointController.h
+                25 file(s) copied.
+                 1 file(s) copied.
+     1>Done Building Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.49
