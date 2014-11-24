@@ -14,5 +14,8 @@ BirdController::BirdController(
 void BirdController::update(float elapsedTimeSeconds){
 	velocity += (gravity * elapsedTimeSeconds);
 	position += (velocity * elapsedTimeSeconds);
+	if(position.y <= floorHeight + 1){
+		position.y = floorHeight + 1;
+	}
 	target->modelMatrix = glm::translate(glm::mat4(1.0f), position);
 }

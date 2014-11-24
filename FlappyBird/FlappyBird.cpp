@@ -21,6 +21,7 @@
 #include "Wall.h"
 #include "Bird.h"
 #include "BirdController.h"
+#define SPACEBAR 32
 
 struct FlappyBird : public OpenGLApplicationBase{
 	//VisualObject *floor, *bird, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
@@ -33,8 +34,9 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bird->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		bird->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
 		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
-		//bird->addController(new BirdController());
-		bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+		birdController = new BirdController();
+		bird->addController(birdController);
+		//bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		pyramid1 = new Sphere();
 		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
@@ -258,6 +260,7 @@ private:
 	float x, y, z;
 	float boardSize;
 	std::string direction;
+	
 
 protected:
 	GLuint view;
@@ -269,6 +272,7 @@ protected:
 	bool directOn;
 	bool posOn;
 	bool spOn;
+	BirdController* birdController;
 
 };
 
@@ -296,6 +300,10 @@ void SpecialKeyboardCB(int Key, int x, int y){
 void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
+	case SPACEBAR:
+		birdController->velocity = glm::vec3(0.0f,4.0f,0.0f);
+		
+		break;
 	case 'w': case 'W':
 		zTrans++;
 		break;

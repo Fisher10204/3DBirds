@@ -21,7 +21,7 @@
 #include "Wall.h"
 #include "SoundSource.h"
 
-
+#define SPACEBAR 32
 
 struct kuczmamaLab10 : public OpenGLApplicationBase{
 	//VisualObject *floor, *pyramid0, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
@@ -29,7 +29,7 @@ struct kuczmamaLab10 : public OpenGLApplicationBase{
 
 	kuczmamaLab10() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
-		sound = new SoundSource("Footsteps.wav");
+		sound = new SoundSource("flapping_wings.wav");
 		sound->setLooping(true);
 		this->addChild(sound);
 		sound->play();
@@ -324,6 +324,9 @@ void SpecialKeyboardCB(int Key, int x, int y){
 void kuczmamaLab10::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
+	case SPACEBAR:
+
+		break;
 	case 'w': case 'W':
 		zTrans++;
 		break;

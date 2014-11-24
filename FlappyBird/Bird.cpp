@@ -4,7 +4,7 @@
 #include "Cone.h"
 #include "Sphere.h"
 
- 
+
 Bird::Bird( )
 	: VisualObject(  )
 {
@@ -23,7 +23,8 @@ Bird::Bird( )
 		VisualObject * leftWing = new Cone();
 		leftWing->fixedTransformation = translate(mat4(1.0f), vec3(0.25f, 0.0f, 0.0f))
 										* glm::rotate(glm::mat4(1.0f),90.0f,glm::vec3(0.0f,1.0f,0.0f));
-		leftWing->material.setAmbientAndDiffuseMat(vec4( 1.0f, 0.647, 0.0f, 1.0f)); 
+		leftWing->material.setAmbientAndDiffuseMat(vec4( 1.0f, 0.647, 0.0f, 1.0f));
+
 		this->addChild(leftWing);
 
 		VisualObject * rightWing = new Cone();
