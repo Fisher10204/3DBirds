@@ -33,14 +33,14 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bird->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		bird->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
 		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
-		bird->addController(new BirdController());
-		//bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+		//bird->addController(new BirdController());
+		bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		pyramid1 = new Sphere();
 		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		pyramid1->material.setTextureMapped(true); 
-		pyramid1->material.setupTexture("wall.bmp");
-		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(1.0f, 0.0f, 0.0f)));
+		pyramid1->material.setupTexture("earth.bmp");
+		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		pyramid2 = new Cylinder();
 		pyramid2->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));

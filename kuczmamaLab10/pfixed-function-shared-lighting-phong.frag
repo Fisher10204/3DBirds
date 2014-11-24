@@ -148,6 +148,23 @@ vec4 calcLight( GeneralLight light, Material object )
 	return totalLight;
 }
 
+const vec4 fogColor = vec4(0.6f, 0.6f, 0.6f, 0.6f);
+const float fogEnd = 50.0f;
+const float fogStart = 1.0f;
+const float fogDensity = 0.1f;
+float distanceFromViewPoint;
+float linearFogFactor() {
+	distanceFromViewPoint = distance(worldEyePosition, WorldPos0);
+	return max((fogEnd - distanceFromViewPoint)/(fogEnd - fogStart), 0.0f);
+}
+float exponentialFogFactor() {
+	distanceFromViewPoint = distance(worldEyePosition, WorldPos0);
+	return exp( -(fogDensity * distanceFromViewPoint));
+}
+float exponentialTwoFogFactor() {
+	distanceFromViewPoint = distance(worldEyePosition, WorldPos0);
+	return exp( - pow((fogDensity * distanceFromViewPoint),2));
+}
 
 
 void main()
@@ -164,6 +181,11 @@ void main()
 	for (int i = 0; i < MaxLights; i++)  {
 	
 		FragColor += calcLight( lights[i], texturedMaterial );
+
+		float fogFactor = linearFogFactor();
+		FragColor = fogFactor * FragColor + (1-fogFactor) * fogColor;
+
+		FragColor.a = object.diffuseMat.a;
 	}
 
 }

@@ -25,6 +25,7 @@
   <ItemGroup>
     <None Include="pcVsUniViewProj.vert" />
     <None Include="pfixed-function-shared-lighting-phong.frag" />
+    <None Include="pcFS.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pyramid.h">
@@ -44,5 +45,19 @@
     <Image Include="wall.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="homer.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="flapping_wings.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Footsteps.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="pop.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

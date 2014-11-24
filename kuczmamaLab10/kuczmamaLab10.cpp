@@ -19,41 +19,68 @@
 #include "SharedGeneralLighting.h"
 #include "SpaceShip.h"
 #include "Wall.h"
+#include "SoundSource.h"
 
 
-struct FlappyBird : public OpenGLApplicationBase{
+
+struct kuczmamaLab10 : public OpenGLApplicationBase{
 	//VisualObject *floor, *pyramid0, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
+	SoundSource* sound;
 
-	FlappyBird() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
+	kuczmamaLab10() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
+		sound = new SoundSource("Footsteps.wav");
+		sound->setLooping(true);
+		this->addChild(sound);
+		sound->play();
+
 		floor = new Floor2();
 
-		pyramid0 = new SpaceShip();
+		wall = new Wall(); 
+		wall->fixedTransformation = translate(mat4(1.0f), vec3(0.0f, -3.0f, -4.0f)); 
+		wall->material.setTextureMapped(true); 
+		wall->material.setupTexture("wall.bmp");
+		addChild(wall);
+
+		pyramid0 = new Pyramid();
 		pyramid0->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-		pyramid0->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
+		//pyramid0->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
+		pyramid0->material.setTextureMapped(true); 
+		pyramid0->material.setupTexture("test.bmp");
 		pyramid0->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+
 
 		pyramid1 = new Sphere();
 		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		pyramid1->material.setTextureMapped(true); 
-		pyramid1->material.setupTexture("wall.bmp");
-		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(1.0f, 0.0f, 0.0f)));
+		pyramid1->material.setupTexture("earth.bmp");
+		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+		
+
+
 
 		pyramid2 = new Cylinder();
 		pyramid2->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		pyramid2->material.setTextureMapped(true); 
+		pyramid2->material.setupTexture("test.bmp");
 		pyramid2->addController(new SpinnerController(glm::vec3(-3.0f, 0.0f, 0.0f),  glm::vec3(0.0f, 0.0f, 1.0f)));
 
 		pyramid3 = new Cone();
 		pyramid3->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+		pyramid3->material.setTextureMapped(true); 
+		pyramid3->material.setupTexture("test.bmp");
 		pyramid3->addController(new OrbitController(glm::vec3(10.f, 0.f, 0.f), glm::vec3(0.f, -1.f, 0.f), glm::vec3(1.f, 0.f, 0.f),35));
 
 		pyramid4 = new Cube();
+		
 		vector<glm::vec3> waypoints;
 		waypoints.push_back(glm::vec3(-3.5f, -2.5f, 3.5f));
 		waypoints.push_back(glm::vec3(3.5f, -2.5f, 3.5f));
 		waypoints.push_back(glm::vec3(3.5f, -2.5f, -3.5f));
 		waypoints.push_back(glm::vec3(-3.5f, -2.5f, -3.5f));
-		pyramid4->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+		pyramid4->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 1.0f, 0.0f, 0.5f));
+		pyramid4->material.setTextureMapped(true); 
+		pyramid4->material.setupTexture("homer.bmp");
 		pyramid4->addController(new WayPointController(waypoints, 1.5f));
 		addChild(floor);
 		addChild(pyramid0);
@@ -65,6 +92,8 @@ struct FlappyBird : public OpenGLApplicationBase{
 		directOn = false;
 		posOn = false;
 		spOn = false;
+		
+
 		// Create array of ShaderInfo structs that specifies the vertex and 
 		// fragment shaders to be compiled and linked into a program. 
 		ShaderInfo shaders[] = { 
@@ -82,7 +111,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		pyramid2->setShader(shaderProgram);
 		pyramid3->setShader(shaderProgram);
 		pyramid4->setShader(shaderProgram);
-
+		wall->setShader(shaderProgram);
 		setupLighting(shaderProgram);
 
 	} // end bachmaerLab8 constructor
@@ -256,6 +285,7 @@ private:
 	float x, y, z;
 	float boardSize;
 	std::string direction;
+	VisualObject* c;
 
 protected:
 	GLuint view;
@@ -283,7 +313,7 @@ void SpecialKeyboardCB(int Key, int x, int y){
 		((kuczmamaLab10*)s_pOpenGLAppBase)->rotationX++;
 		break;
 	case GLUT_KEY_DOWN:
-		((FlappyBird*)s_pOpenGLAppBase)->rotationX--;
+		((kuczmamaLab10*)s_pOpenGLAppBase)->rotationX--;
 		break;
 	default:
 		//OpenGLApplicationBase::KeyboardCB(Key, x, y);
@@ -291,7 +321,7 @@ void SpecialKeyboardCB(int Key, int x, int y){
 	}
 }
 
-void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
+void kuczmamaLab10::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
 	case 'w': case 'W':
@@ -372,11 +402,11 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 }
 
 void viewMenu(int value){
-	((FlappyBird*)s_pOpenGLAppBase)->view = value;
+	((kuczmamaLab10*)s_pOpenGLAppBase)->view = value;
 	cout << "Changing view " << value << endl;
 }//end figureMenu
 
-GLuint FlappyBird::createViewMenu(){
+GLuint kuczmamaLab10::createViewMenu(){
 	GLuint menuId = glutCreateMenu(viewMenu);
 	// Specify menu items and their integer identifiers
 	glutAddMenuEntry("Default", 0);
@@ -394,6 +424,6 @@ GLuint FlappyBird::createViewMenu(){
 int main(int argc, char** argv){
 	GLUTBaseInit(argc, argv);
 	GLUTBaseCreateWindow( "CSE 386 Lab 10" );
-	FlappyBird pApp;
+	kuczmamaLab10 pApp;
 	GLUTBaseRunApplication(&pApp);
 }

@@ -35,7 +35,7 @@ void Cube::initialize()
 
 	setShaderValues();
 
-	vector<pnVertexData> v;
+	vector<pntVertexData> v;
 
 	vec3 v0 = vec3( -hW, -hH, hD);
 	vec3 v1 =  vec3( -hW, -hH, -hD);
@@ -60,67 +60,127 @@ void Cube::initialize()
 	// 4 6 5
 	// 0 2 3
 	// 0 1 2
-
 	normal = findUnitNormal(v0, v4, v1);
-	v.push_back(pnVertexData(v0, normal));
-	v.push_back(pnVertexData(v4, normal));
-	v.push_back(pnVertexData(v1, normal));
+	v.push_back(pntVertexData(v0, normal, glm::vec2(0.0f, 0.0f)));
+	v.push_back(pntVertexData(v4, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v1, normal, glm::vec2(1.0f, 0.0f)));
 
 	normal = findUnitNormal(v1, v4, v5);
-	v.push_back(pnVertexData(v1, normal));
-	v.push_back(pnVertexData(v4, normal));
-	v.push_back(pnVertexData(v5, normal));
+	v.push_back(pntVertexData(v1, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v4, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v5, normal, glm::vec2(1.0f, 1.0f)));
 
 	normal = findUnitNormal(v3, v2, v6);
-	v.push_back(pnVertexData(v3, normal));
-	v.push_back(pnVertexData(v2, normal));
-	v.push_back(pnVertexData(v6, normal));
+	v.push_back(pntVertexData(v3, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v2, normal, glm::vec2(0.0f, 0.0f)));
+	v.push_back(pntVertexData(v6, normal, glm::vec2(0.0f, 1.0f)));
 
 	normal = findUnitNormal(v3, v6, v7);
-	v.push_back(pnVertexData(v3, normal));
-	v.push_back(pnVertexData(v6, normal));
-	v.push_back(pnVertexData(v7, normal));
+	v.push_back(pntVertexData(v3, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v6, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v7, normal, glm::vec2(1.0f, 1.0f)));
 
 	normal = findUnitNormal(v0, v3, v7);
-	v.push_back(pnVertexData(v0, normal));
-	v.push_back(pnVertexData(v3, normal));
-	v.push_back(pnVertexData(v7, normal));
+	v.push_back(pntVertexData(v0, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v3, normal, glm::vec2(0.0f, 0.0f)));
+	v.push_back(pntVertexData(v7, normal, glm::vec2(0.0f, 1.0f)));
 
 	normal = findUnitNormal(v0, v7, v4);
-	v.push_back(pnVertexData(v0, normal));
-	v.push_back(pnVertexData(v7, normal));
-	v.push_back(pnVertexData(v4, normal));
+	v.push_back(pntVertexData(v0, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v7, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v4, normal, glm::vec2(1.0f, 1.0f)));
 
 	normal = findUnitNormal(v1, v5, v2);
-	v.push_back(pnVertexData(v1, normal));
-	v.push_back(pnVertexData(v5, normal));
-	v.push_back(pnVertexData(v2, normal));
+	v.push_back(pntVertexData(v1, normal, glm::vec2(0.0f, 0.0f)));
+	v.push_back(pntVertexData(v5, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v2, normal, glm::vec2(1.0f, 0.0f)));
 
 	normal = findUnitNormal(v2, v5, v6);
-	v.push_back(pnVertexData(v2, normal));
-	v.push_back(pnVertexData(v5, normal));
-	v.push_back(pnVertexData(v6, normal));
+	v.push_back(pntVertexData(v2, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v5, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v6, normal, glm::vec2(1.0f, 1.0f)));
 
 	normal = findUnitNormal(v4, v7, v6);
-	v.push_back(pnVertexData(v4, normal));
-	v.push_back(pnVertexData(v7, normal));
-	v.push_back(pnVertexData(v6, normal));
+	v.push_back(pntVertexData(v4, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v7, normal, glm::vec2(0.0f, 0.0f)));
+	v.push_back(pntVertexData(v6, normal, glm::vec2(0.0f, 1.0f)));
 
 	normal = findUnitNormal(v4, v6, v5);
-	v.push_back(pnVertexData(v4, normal));
-	v.push_back(pnVertexData(v6, normal));
-	v.push_back(pnVertexData(v5, normal));
+	v.push_back(pntVertexData(v4, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v6, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v5, normal, glm::vec2(1.0f, 1.0f)));
 
 	normal = findUnitNormal(v0, v2, v3);
-	v.push_back(pnVertexData(v0, normal));
-	v.push_back(pnVertexData(v2, normal));
-	v.push_back(pnVertexData(v3, normal));
+	v.push_back(pntVertexData(v0, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v2, normal, glm::vec2(0.0f, 1.0f)));
+	v.push_back(pntVertexData(v3, normal, glm::vec2(0.0f, 0.0f)));
 
 	normal = findUnitNormal(v0, v1, v2);
-	v.push_back(pnVertexData(v0, normal));
-	v.push_back(pnVertexData(v1, normal));
-	v.push_back(pnVertexData(v2, normal));
+	v.push_back(pntVertexData(v0, normal, glm::vec2(1.0f, 0.0f)));
+	v.push_back(pntVertexData(v1, normal, glm::vec2(1.0f, 1.0f)));
+	v.push_back(pntVertexData(v2, normal, glm::vec2(0.0f, 1.0f)));
 
+	/*
+	normal = findUnitNormal(v0, v4, v1);
+	v.push_back(pntVertexData(v0, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v4, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v1, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v1, v4, v5);
+	v.push_back(pntVertexData(v1, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v4, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v5, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v3, v2, v6);
+	v.push_back(pntVertexData(v3, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v2, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v6, normal,glm::vec2(0.0f,1.0f)));
+
+	normal = findUnitNormal(v3, v6, v7);
+	v.push_back(pntVertexData(v3, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v6, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v7, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v0, v3, v7);
+	v.push_back(pntVertexData(v0, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v3, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v7, normal,glm::vec2(0.0f,1.0f)));
+
+	normal = findUnitNormal(v0, v7, v4);
+	v.push_back(pntVertexData(v0, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v7, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v4, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v1, v5, v2);
+	v.push_back(pntVertexData(v1, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v5, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v2, normal,glm::vec2(0.0f,0.0f)));
+
+	normal = findUnitNormal(v2, v5, v6);
+	v.push_back(pntVertexData(v2, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v5, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v6, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v4, v7, v6);
+	v.push_back(pntVertexData(v4, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v7, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v6, normal,glm::vec2(0.0f,0.0f)));
+
+	normal = findUnitNormal(v4, v6, v5);
+	v.push_back(pntVertexData(v4, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v6, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v5, normal,glm::vec2(1.0f,1.0f)));
+
+	normal = findUnitNormal(v0, v2, v3);
+	v.push_back(pntVertexData(v0, normal,glm::vec2(0.0f,0.0f)));
+	v.push_back(pntVertexData(v2, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v3, normal,glm::vec2(0.0f,0.0f)));
+
+	normal = findUnitNormal(v0, v1, v2);
+	v.push_back(pntVertexData(v0, normal,glm::vec2(1.0f,0.0f)));
+	v.push_back(pntVertexData(v1, normal,glm::vec2(0.0f,1.0f)));
+	v.push_back(pntVertexData(v2, normal,glm::vec2(1.0f,1.0f)));
+	*/
 	GLuint VBO;
 
 	glGenVertexArrays (1, &vertexArrayObject); 
@@ -128,13 +188,16 @@ void Cube::initialize()
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(pnVertexData), &v[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(pntVertexData), &v[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(pnVertexData), 0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(pntVertexData), 0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(pnVertexData), (const GLvoid*)sizeof(vec3));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(pntVertexData), (const GLvoid*)sizeof(vec3));
 	glEnableVertexAttribArray(1);
+
+	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(pntVertexData), (const GLvoid*)(2 * sizeof(vec3)) ); 
+	glEnableVertexAttribArray(3);
 
 	numberOfIndices = v.size();
 	v.clear();
@@ -159,7 +222,7 @@ void Cube::draw()
 	
 	glDrawArrays(GL_TRIANGLES, 0, numberOfIndices );
 
-    glDepthMask (GL_TRUE);
+    //glDepthMask (GL_TRUE);
     glDisable (GL_BLEND);
 
 	// Draw all children

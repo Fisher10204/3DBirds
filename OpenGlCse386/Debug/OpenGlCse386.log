@@ -1,25 +1,30 @@
-﻿Build started 11/19/2014 5:55:27 PM.
-     1>Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/24/2014 5:54:41 PM.
+     1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Sphere.cpp
-         Sphere.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Cube.cpp
+         Cube.cpp
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib" /NOLOGO Debug\bitmap_class.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" /NOLOGO Debug\aldlist.obj
+         Debug\bitmap_class.obj
          Debug\BuildShaderProgram.obj
          Debug\BulletController.obj
          Debug\Cone.obj
          Debug\Controller.obj
          Debug\Cube.obj
+         Debug\CWaves.obj
          Debug\Cylinder.obj
          Debug\Floor.obj
          Debug\Floor2.obj
+         Debug\Framework.obj
          Debug\glutBase.obj
          Debug\GlutObject.obj
+         Debug\LoadOAL.obj
          Debug\Material.obj
          Debug\OpenGLApplicationBase.obj
          Debug\OrbitController.obj
          Debug\SharedGeneralLighting.obj
          Debug\SharedProjectionAndViewing.obj
+         Debug\SoundSource.obj
          Debug\SpaceShip.obj
          Debug\Sphere.obj
          Debug\SpinnerController.obj
@@ -27,11 +32,15 @@
          Debug\VisualObject.obj
          Debug\Wall.obj
          Debug\WayPointController.obj
-         OpenGlCse386.vcxproj -> C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib
+         ..\Lib\OpenAL32.lib
+         OpenGlCse386.vcxproj -> C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib
        PostBuildEvent:
-         copy "*.h" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\Include\
-         copy "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\OpenGlCse386.lib" "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\"\"Lib\OpenGlCse386.lib"
+         copy "*.h" "C:\Users\kuczmama\Desktop\3DBirds\"\Include\
+         copy "C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" "C:\Users\kuczmama\Desktop\3DBirds\"\"Lib\OpenGlCse386.lib"
          :VCEnd
+         al.h
+         alc.h
+         aldlist.h
          bitmap_class.h
          BuildShaderProgram.h
          Bullet.h
@@ -39,16 +48,23 @@
          Cone.h
          Controller.h
          Cube.h
+         CWaves.h
          Cylinder.h
+         efx-creative.h
+         EFX-Util.h
+         efx.h
          Floor.h
          Floor2.h
+         Framework.h
          glutBase.h
          GlutObject.h
+         LoadOAL.h
          Material.h
          OpenGLApplicationBase.h
          OrbitController.h
          SharedGeneralLighting.h
          SharedProjectionAndViewing.h
+         SoundSource.h
          SpaceShip.h
          Sphere.h
          SpinnerController.h
@@ -57,10 +73,11 @@
          VisualObject.h
          Wall.h
          WayPointController.h
-                25 file(s) copied.
+         xram.h
+                36 file(s) copied.
                  1 file(s) copied.
-     1>Done Building Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.49
+Time Elapsed 00:00:07.08

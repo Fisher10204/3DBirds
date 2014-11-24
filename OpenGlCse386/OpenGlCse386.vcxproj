@@ -84,22 +84,32 @@ copy "$(TargetPath)" "$(SolutionDir)"\"Lib\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="al.h" />
+    <ClInclude Include="alc.h" />
+    <ClInclude Include="aldlist.h" />
     <ClInclude Include="bitmap_class.h" />
     <ClInclude Include="BuildShaderProgram.h" />
     <ClInclude Include="BulletController.h" />
     <ClInclude Include="Cone.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="CWaves.h" />
     <ClInclude Include="Cylinder.h" />
+    <ClInclude Include="efx-creative.h" />
+    <ClInclude Include="EFX-Util.h" />
+    <ClInclude Include="efx.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Floor2.h" />
+    <ClInclude Include="Framework.h" />
     <ClInclude Include="glutBase.h" />
     <ClInclude Include="GlutObject.h" />
+    <ClInclude Include="LoadOAL.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="OpenGLApplicationBase.h" />
     <ClInclude Include="OrbitController.h" />
     <ClInclude Include="SharedGeneralLighting.h" />
     <ClInclude Include="SharedProjectionAndViewing.h" />
+    <ClInclude Include="SoundSource.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="SpinnerController.h" />
@@ -108,24 +118,30 @@ copy "$(TargetPath)" "$(SolutionDir)"\"Lib\$(TargetFileName)"</Command>
     <ClInclude Include="VisualObject.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WayPointController.h" />
+    <ClInclude Include="xram.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aldlist.cpp" />
     <ClCompile Include="bitmap_class.cpp" />
     <ClCompile Include="BuildShaderProgram.cpp" />
     <ClCompile Include="BulletController.cpp" />
     <ClCompile Include="Cone.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="CWaves.cpp" />
     <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Floor2.cpp" />
+    <ClCompile Include="Framework.cpp" />
     <ClCompile Include="glutBase.cpp" />
     <ClCompile Include="GlutObject.cpp" />
+    <ClCompile Include="LoadOAL.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="OpenGLApplicationBase.cpp" />
     <ClCompile Include="OrbitController.cpp" />
     <ClCompile Include="SharedGeneralLighting.cpp" />
     <ClCompile Include="SharedProjectionAndViewing.cpp" />
+    <ClCompile Include="SoundSource.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="SpinnerController.cpp" />
@@ -133,6 +149,9 @@ copy "$(TargetPath)" "$(SolutionDir)"\"Lib\$(TargetFileName)"</Command>
     <ClCompile Include="VisualObject.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WayPointController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Lib\OpenAL32.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

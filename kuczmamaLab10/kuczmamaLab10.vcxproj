@@ -58,7 +58,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\Lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;freeglut.lib;OpenGlCse386.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;freeglut.lib;OpenGlCse386.lib;OpenAl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,6 +83,7 @@
     <ClCompile Include="Pyramid.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="pcFS.frag" />
     <None Include="pcVsUniViewProj.vert" />
     <None Include="pfixed-function-shared-lighting-phong.frag" />
   </ItemGroup>
@@ -91,9 +92,15 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="earth.bmp" />
+    <Image Include="homer.bmp" />
     <Image Include="test.bmp" />
     <Image Include="wall.bmp" />
     <Image Include="wood-Sphere.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="flapping_wings.wav" />
+    <Media Include="Footsteps.wav" />
+    <Media Include="pop.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

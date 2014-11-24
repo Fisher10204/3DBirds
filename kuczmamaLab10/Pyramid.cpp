@@ -1,4 +1,5 @@
 #include "Pyramid.h"
+#include "textureCoordinates.h"
 
 Pyramid::Pyramid(GLfloat width, GLfloat height){
 	this->width = width;
@@ -18,7 +19,7 @@ void Pyramid::initialize(){
 
 	float halfwidth = width /2.0f;
 	float halfheight = height /2.0f;
-	vector<pncVertexData> v;
+	vector<pntVertexData> v;
 
 	glm::vec3 v0 = glm::vec3(-halfwidth,-halfheight,-halfwidth); //back left
 	glm::vec3 v1 = glm::vec3(halfwidth,-halfheight,-halfwidth); //back right
@@ -44,56 +45,64 @@ void Pyramid::initialize(){
 
 	//front face
 	n0 = findUnitNormal(v4,v3,v2);
-	v.push_back( pncVertexData(v4,n0,c4) );
-	v.push_back( pncVertexData(v3,n0,c3) );
-	v.push_back( pncVertexData(v2,n0,c2) );
+	v.push_back( pntVertexData(v4,n0,getPlanarTextCoords(v4, width, height)) );
+	v.push_back( pntVertexData(v3,n0,getPlanarTextCoords(v3, width, height)) );
+	v.push_back( pntVertexData(v2,n0,getPlanarTextCoords(v2, width, height)) );
 
 
 	//bottom left face
 	n1 = findUnitNormal(v2,v3,v0);
-	v.push_back( pncVertexData(v2,n1,c2) );
-	v.push_back( pncVertexData(v3,n1,c3) );
-	v.push_back( pncVertexData(v0,n1,c0) );
+	v.push_back( pntVertexData(v2,n1,getPlanarTextCoords(v2, width, height)) );
+	v.push_back( pntVertexData(v3,n1,getPlanarTextCoords(v3, width, height)) );
+	v.push_back( pntVertexData(v0,n1,getPlanarTextCoords(v0, width, height)) );
 
 
 	//bottom right face
 	n2 = findUnitNormal(v2,v0,v1);
-	v.push_back( pncVertexData(v2,n2,c2) );
-	v.push_back( pncVertexData(v0,n2,c0) );
-	v.push_back( pncVertexData(v1,n2,c1) );
+	v.push_back( pntVertexData(v2,n2,getPlanarTextCoords(v2, width, height)) );
+	v.push_back( pntVertexData(v0,n2,getPlanarTextCoords(v0, width, height)) );
+	v.push_back( pntVertexData(v1,n2,getPlanarTextCoords(v1, width, height)) );
 
 
 
 	//back face
 	n3 = findUnitNormal(v4,v1,v0);
-	v.push_back( pncVertexData(v4,n3,c4) );
-	v.push_back( pncVertexData(v1,n3,c1) );
-	v.push_back( pncVertexData(v0,n3,c0) );
+	v.push_back( pntVertexData(v4,n3,getPlanarTextCoords(v4, width, height)) );
+	v.push_back( pntVertexData(v1,n3,getPlanarTextCoords(v1, width, height)) );
+	v.push_back( pntVertexData(v0,n3,getPlanarTextCoords(v0, width, height)) );
 
 
 	//right face
 	n4 = findUnitNormal(v4,v2,v1);
-	v.push_back( pncVertexData(v4,n4,c4) );
-	v.push_back( pncVertexData(v2,n4,c2) );
-	v.push_back( pncVertexData(v1,n4,c1) );
+	v.push_back( pntVertexData(v4,n4,getPlanarTextCoords(v4, width, height)) );
+	v.push_back( pntVertexData(v2,n4,getPlanarTextCoords(v2, width, height)) );
+	v.push_back( pntVertexData(v1,n4,getPlanarTextCoords(v1, width, height)) );
 
 
 	//left face
 	n5 = findUnitNormal(v4,v0,v3);
-	v.push_back( pncVertexData(v4,n5,c4));
-	v.push_back( pncVertexData(v0,n5,c0));
-	v.push_back( pncVertexData(v3,n5,c3));
+	v.push_back( pntVertexData(v4,n5,getPlanarTextCoords(v4, width, height)));
+	v.push_back( pntVertexData(v0,n5,getPlanarTextCoords(v0, width, height)));
+	v.push_back( pntVertexData(v3,n5,getPlanarTextCoords(v3, width, height)));
 
-
+	/*
+	vector<pntVertexData> norms; glm::vec3 faceNormal = findUnitNormal(v0, v1, v2);
+	norms.push_back(pntVertexData(v0, faceNormal, getPlanarTextCoords(v0, width, height)));
+	norms.push_back(pntVertexData(v1, faceNormal, getPlanarTextCoords(v1, width, height)));
+	norms.push_back(pntVertexData(v2, faceNormal, getPlanarTextCoords(v2, width, height)));
+	*/
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(pncVertexData), &v[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(pncVertexData), 0);
+	glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(pntVertexData), &v[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(pntVertexData), 0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(pncVertexData),(GLvoid*)sizeof(glm::vec3));
+	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(pntVertexData),(GLvoid*)sizeof(glm::vec3));
 	glEnableVertexAttribArray(2);
+
+	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(pntVertexData), (const GLvoid*)(2 * sizeof(vec3)) ); 
+	glEnableVertexAttribArray(3);
 
 	numberOfIndices = v.size();
 
