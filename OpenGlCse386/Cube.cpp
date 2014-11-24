@@ -222,7 +222,7 @@ void Cube::draw()
 	
 	glDrawArrays(GL_TRIANGLES, 0, numberOfIndices );
 
-    //glDepthMask (GL_TRUE);
+    glDepthMask (GL_TRUE);
     glDisable (GL_BLEND);
 
 	// Draw all children

@@ -302,6 +302,8 @@ void Sphere::draw()
 	glBindVertexArray(vertexArrayObjectForBottom);
     glDrawElements(GL_TRIANGLES, bottomIndicesCount, GL_UNSIGNED_INT, 0);
 
+	glDepthMask (GL_TRUE);
+
 	// Draw all children
 	VisualObject::draw();
 
