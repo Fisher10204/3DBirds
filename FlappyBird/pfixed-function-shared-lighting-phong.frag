@@ -115,7 +115,7 @@ vec4 calcLight( GeneralLight light, Material object )
 						totalLight += totalSpotLight;
 					}
 			}else if(light.positionOrDirection.w == 0){
-				directionToTheLight = light.positionOrDirection;
+				directionToTheLight = light.positionOrDirection.xyz;
 				//Do positional and directional light
 				// Diffuse
 				float DiffuseFactor = max(dot(Normal0, directionToTheLight),0.0f);
