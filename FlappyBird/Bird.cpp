@@ -3,6 +3,7 @@
 #include "Cylinder.h"
 #include "Cone.h"
 #include "Sphere.h"
+#include "WingController.h"
 
 
 Bird::Bird( )
@@ -24,6 +25,7 @@ Bird::Bird( )
 		leftWing->fixedTransformation = translate(mat4(1.0f), vec3(0.25f, 0.0f, 0.0f))
 										* glm::rotate(glm::mat4(1.0f),90.0f,glm::vec3(0.0f,1.0f,0.0f));
 		leftWing->material.setAmbientAndDiffuseMat(vec4( 1.0f, 0.647, 0.0f, 1.0f));
+		leftWing->addController(new WingController(5.0f,1));
 
 		this->addChild(leftWing);
 
@@ -31,6 +33,7 @@ Bird::Bird( )
 		rightWing->fixedTransformation = translate(mat4(1.0f), vec3(-0.25f, 0.0f, 0.0f))
 										* glm::rotate(glm::mat4(1.0f),-90.0f,glm::vec3(0.0f,1.0f,0.0f));
 		rightWing->material.setAmbientAndDiffuseMat(vec4( 1.0f, 0.647, 0.0f, 1.0f)); 
+		rightWing->addController(new WingController(5.0f,0));
 		this->addChild(rightWing);
 
 		

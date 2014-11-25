@@ -91,6 +91,7 @@
     <ClCompile Include="BirdController.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
     <ClCompile Include="Pyramid.cpp" />
+    <ClCompile Include="WingController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pcVsUniViewProj.vert" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="BirdController.h" />
     <ClInclude Include="Pyramid.h" />
+    <ClInclude Include="WingController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

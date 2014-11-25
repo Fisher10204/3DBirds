@@ -1,32 +1,16 @@
-﻿Build started 11/19/2014 5:25:42 PM.
-     1>Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\kuczmamaLab8\kuczmamaLab8.vcxproj" on node 7 (Rebuild target(s)).
+﻿Build started 11/24/2014 7:13:16 PM.
+     1>Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab8\kuczmamaLab8.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt kuczmamaLab8.cpp Pyramid.cpp
          Pyramid.cpp
          kuczmamaLab8.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab8.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Lib glew32.lib freeglut.lib OpenGlCse386.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab8.lib" /MACHINE:X86 Debug\kuczmamaLab8.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\kuczmamaLab8.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Lib glew32.lib freeglut.lib OpenGlCse386.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\kuczmamaLab8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\kuczmamaLab8.lib" /MACHINE:X86 Debug\kuczmamaLab8.obj
          Debug\Pyramid.obj
-     1>OpenGlCse386.lib(BuildShaderProgram.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(BuildShaderProgram.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Cone.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Cone.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Controller.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Controller.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Cube.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Cube.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Cylinder.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Cylinder.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Floor2.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Floor2.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(glutBase.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(glutBase.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Material.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Material.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(OpenGLApplicationBase.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(OpenGLApplicationBase.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(OrbitController.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(OrbitController.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(SharedProjectionAndViewing.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(SharedProjectionAndViewing.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(Sphere.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(Sphere.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(SpinnerController.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(SpinnerController.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(textureCoordinates.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(textureCoordinates.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(VisualObject.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(VisualObject.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-     1>OpenGlCse386.lib(WayPointController.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'OpenGlCse386.lib(WayPointController.obj)' or at 'C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\vc110.pdb'; linking object as if no debug info
-         kuczmamaLab8.vcxproj -> C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\Debug\kuczmamaLab8.exe
-     1>Done Building Project "C:\Users\kuczmama\Downloads\kuczmamaLab09\OpenGlCse386\kuczmamaLab8\kuczmamaLab8.vcxproj" (Rebuild target(s)).
+         kuczmamaLab8.vcxproj -> C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\kuczmamaLab8.exe
+     1>Done Building Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab8\kuczmamaLab8.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:43.17
+Time Elapsed 00:00:19.67
