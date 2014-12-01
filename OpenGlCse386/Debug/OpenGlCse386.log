@@ -1,10 +1,47 @@
-﻿Build started 11/24/2014 7:14:33 PM.
-     1>Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
-         OpenGlCse386.vcxproj -> C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\OpenGlCse386.lib
+﻿Build started 12/1/2014 4:01:15 PM.
+     1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt CWaves.cpp Framework.cpp LoadOAL.cpp SoundSource.cpp aldlist.cpp
+         Skipping... (no relevant changes detected)
+         aldlist.cpp
+         SoundSource.cpp
+         LoadOAL.cpp
+         Framework.cpp
+         CWaves.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" /NOLOGO Debug\aldlist.obj
+         Debug\bitmap_class.obj
+         Debug\BuildShaderProgram.obj
+         Debug\BulletController.obj
+         Debug\Cone.obj
+         Debug\Controller.obj
+         Debug\Cube.obj
+         Debug\CWaves.obj
+         Debug\Cylinder.obj
+         Debug\Floor.obj
+         Debug\Floor2.obj
+         Debug\Framework.obj
+         Debug\glutBase.obj
+         Debug\GlutObject.obj
+         Debug\LoadOAL.obj
+         Debug\Material.obj
+         Debug\OpenGLApplicationBase.obj
+         Debug\OrbitController.obj
+         Debug\SharedGeneralLighting.obj
+         Debug\SharedProjectionAndViewing.obj
+         Debug\SoundSource.obj
+         Debug\SpaceShip.obj
+         Debug\Sphere.obj
+         Debug\SpinnerController.obj
+         Debug\textureCoordinates.obj
+         Debug\VisualObject.obj
+         Debug\Wall.obj
+         Debug\WayPointController.obj
+         ..\Lib\OpenAL32.lib
+         OpenGlCse386.vcxproj -> C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib
        PostBuildEvent:
-         copy "*.h" "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\"\Include\
-         copy "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\Debug\OpenGlCse386.lib" "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\"\"Lib\OpenGlCse386.lib"
+         copy "*.h" "C:\Users\kuczmama\Desktop\3DBirds\"\Include\
+         copy "C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" "C:\Users\kuczmama\Desktop\3DBirds\"\"Lib\OpenGlCse386.lib"
          :VCEnd
          al.h
          alc.h
@@ -44,8 +81,8 @@
          xram.h
                 36 file(s) copied.
                  1 file(s) copied.
-     1>Done Building Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.90
+Time Elapsed 00:00:03.56

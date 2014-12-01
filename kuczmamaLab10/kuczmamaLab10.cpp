@@ -44,7 +44,6 @@ struct kuczmamaLab10 : public OpenGLApplicationBase{
 
 		pyramid0 = new Pyramid();
 		pyramid0->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-		//pyramid0->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
 		pyramid0->material.setTextureMapped(true); 
 		pyramid0->material.setupTexture("test.bmp");
 		pyramid0->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
@@ -54,7 +53,13 @@ struct kuczmamaLab10 : public OpenGLApplicationBase{
 		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		pyramid1->material.setTextureMapped(true); 
 		pyramid1->material.setupTexture("earth.bmp");
+		
 		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
+		pyramid1->fixedTransformation = glm::rotate(glm::mat4(1.0f),-90.0f,glm::vec3(1.0f,0.0f,0.0f));
+
+		cube = new Cube(2.0f,2.0f,2.0f);
+		cube->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 0.5f));
+		cube->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(3.0f,0.0f,0.0f));
 		
 
 
@@ -88,6 +93,7 @@ struct kuczmamaLab10 : public OpenGLApplicationBase{
 		addChild(pyramid2);
 		addChild(pyramid3);
 		addChild(pyramid4);
+		addChild(cube);
 		ambOn = false;
 		directOn = false;
 		posOn = false;
@@ -111,6 +117,7 @@ struct kuczmamaLab10 : public OpenGLApplicationBase{
 		pyramid2->setShader(shaderProgram);
 		pyramid3->setShader(shaderProgram);
 		pyramid4->setShader(shaderProgram);
+		cube->setShader(shaderProgram);
 		wall->setShader(shaderProgram);
 		setupLighting(shaderProgram);
 
@@ -286,6 +293,7 @@ private:
 	float boardSize;
 	std::string direction;
 	VisualObject* c;
+	VisualObject* cube;
 
 protected:
 	GLuint view;
