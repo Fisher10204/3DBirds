@@ -1,6 +1,5 @@
 #include "Controller.h"
-
-static const float floorHeight = -3.0f;
+#include "Constants.h"
 
 class BirdController : public Controller{
 public:

@@ -21,10 +21,12 @@
 #include "Wall.h"
 #include "Bird.h"
 #include "BirdController.h"
+#include "Pipe.h"
+#include "Constants.h"
 #define SPACEBAR 32
 
+
 struct FlappyBird : public OpenGLApplicationBase{
-	//VisualObject *floor, *bird, *pyramid1, *pyramid2, *pyramid3, *pyramid4;
 
 	FlappyBird() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
@@ -36,36 +38,11 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
 		birdController = new BirdController();
 		bird->addController(birdController);
-		//bird->addController(new SpinnerController(glm::vec3(0.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
-		pyramid1 = new Sphere();
-		pyramid1->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-		pyramid1->material.setTextureMapped(true); 
-		pyramid1->material.setupTexture("earth.bmp");
-		pyramid1->addController(new SpinnerController(glm::vec3(3.0f, 0.f, 0.f), glm::vec3(0.0f, 1.0f, 0.0f)));
-
-		pyramid2 = new Cylinder();
-		pyramid2->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-		pyramid2->addController(new SpinnerController(glm::vec3(-3.0f, 0.0f, 0.0f),  glm::vec3(0.0f, 0.0f, 1.0f)));
-
-		pyramid3 = new Cone();
-		pyramid3->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-		pyramid3->addController(new OrbitController(glm::vec3(10.f, 0.f, 0.f), glm::vec3(0.f, -1.f, 0.f), glm::vec3(1.f, 0.f, 0.f),35));
-
-		pyramid4 = new Cube();
-		vector<glm::vec3> waypoints;
-		waypoints.push_back(glm::vec3(-3.5f, -2.5f, 3.5f));
-		waypoints.push_back(glm::vec3(3.5f, -2.5f, 3.5f));
-		waypoints.push_back(glm::vec3(3.5f, -2.5f, -3.5f));
-		waypoints.push_back(glm::vec3(-3.5f, -2.5f, -3.5f));
-		pyramid4->material.setAmbientAndDiffuseMat(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-		pyramid4->addController(new WayPointController(waypoints, 1.5f));
+		pipe = new Pipe();
+		addChild(pipe);
 		addChild(floor);
 		addChild(bird);
-		addChild(pyramid1);
-		addChild(pyramid2);
-		addChild(pyramid3);
-		addChild(pyramid4);
 		ambOn = false;
 		directOn = false;
 		posOn = false;
@@ -83,11 +60,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		generalLighting.setUniformBlockForShader( shaderProgram );
 		floor->setShader(shaderProgram);
 		bird->setShader(shaderProgram);
-		pyramid1->setShader(shaderProgram);
-		pyramid2->setShader(shaderProgram);
-		pyramid3->setShader(shaderProgram);
-		pyramid4->setShader(shaderProgram);
-
+		pipe->setShader(shaderProgram);
 		setupLighting(shaderProgram);
 
 	} // end bachmaerLab8 constructor
@@ -133,11 +106,10 @@ struct FlappyBird : public OpenGLApplicationBase{
 	} // end setupLighting
 
 	virtual void initialize(){
-
 		glClearColor(0.6f,0.6f,1.0f,1.0f);
 		setUpMenus();
 		VisualObject::initialize();
-		floor->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -3.0f, 0.0f));
+		floor->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, floorHeight, 0.0f));
 		x = -3.5f;
 		y = -2.5f;
 		z = -3.5f;
@@ -183,40 +155,20 @@ struct FlappyBird : public OpenGLApplicationBase{
 		glm::mat4 viewMatrix;
 		switch(view){
 		case 0:
+			//Side view (default)
+			viewMatrix = glm::translate(glm::mat4(1.0f),
+				glm::vec3(0.0f, 0.0f, sideViewDistance))
+				* glm::rotate(glm::mat4(1.0f),
+								90.0f,
+								glm::vec3(0.0f,1.0f,0.0f));				
+			break;
+		case 1:
+			//front View
 			viewMatrix = glm::translate(glm::mat4(1.0f),
 				glm::vec3(0.0f, 0.0f, -12.0f));
 			break;
-		case 1:
-			viewMatrix = glm::translate(glm::mat4(1.0f),
-				glm::vec3(0.0f, 0.0f, -10.0f));
-			break;
 		case 2:
-			viewMatrix = glm::translate(glm::mat4(1.0f),
-				glm::vec3(0.0f, 0.0f, -10.0f)) 
-				* glm::rotate( glm::mat4(1.0f),
-				45.0f,
-				glm::vec3(1.0f, 0.0f, 0.0f));
-			break;
-		case 3:
-			viewMatrix = glm::rotate(glm::mat4(1.0f),
-				90.0f,
-				glm::vec3(0.0f, 0.0f, 1.0f))*
-				glm::translate(glm::mat4(1.0f),
-				glm::vec3(0.0f,0.0f, -10.0f))
-				* glm::rotate(glm::mat4(1.0f),
-				90.0f,
-				glm::vec3(1.0f, 0.0f, 0.0f));
-			break;
-		case 4:
-			viewMatrix = glm::lookAt(glm::vec3(0.0f,0.0f, 10.0f), glm::vec3(0.0f,0.0f,0.0f), glm::vec3(0.0f,1.0f,0.0f));
-			break;
-		case 5:
-			viewMatrix = glm::lookAt(glm::vec3(0.0f,5.0f*sqrt(2.0f),sqrt(50.0f)), glm::vec3(0.0f,0.0f,0.0f), glm::vec3(0.0f,1.0f,0.0f));
-			break;
-		case 6:
-			viewMatrix = glm::lookAt(glm::vec3(0.0f,10.0f,0.0f), glm::vec3(0.0f,0.0f,0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-			break;
-		case 7:
+			//Freeform view
 			glm::mat4 transView = glm::translate(glm::mat4(1.0f), glm::vec3( 0.0f, 0.0f,zTrans ));
 			glm::mat4 rotateViewX = glm::rotate(glm::mat4(1.0f), rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
 			glm::mat4 rotateViewY = glm::rotate(glm::mat4(1.0f), rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -242,25 +194,15 @@ struct FlappyBird : public OpenGLApplicationBase{
 		// Set the uniform block for the shaders
 		projectionAndViewing.setProjectionMatrix( projectionMatrix );
 		VisualObject::draw();
-
-		/*glViewport(windowWidth/2.0f, 0, windowWidth/2.0f, windowHeight);
-		projectionMatrix = glm::ortho( -5.0f, 5.0f,-5.0f, 6.0f, 0.1f, 100.0f);
-		projectionAndViewing.setProjectionMatrix( projectionMatrix );
-		VisualObject::draw();*/
-
 	}
 
 private:
 	Floor2* floor;
 	VisualObject* bird;
-	VisualObject* pyramid1;
-	VisualObject* pyramid2;
-	VisualObject* pyramid3;
-	VisualObject* pyramid4;
 	float x, y, z;
 	float boardSize;
 	std::string direction;
-	
+	VisualObject* pipe;
 
 protected:
 	GLuint view;
@@ -273,7 +215,6 @@ protected:
 	bool posOn;
 	bool spOn;
 	BirdController* birdController;
-
 };
 
 void SpecialKeyboardCB(int Key, int x, int y){
@@ -301,7 +242,7 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
 	case SPACEBAR:
-		birdController->velocity = glm::vec3(0.0f,4.0f,0.0f);
+		birdController->velocity = glm::vec3(0.0f,10.0f,0.0f);
 		
 		break;
 	case 'w': case 'W':
@@ -341,34 +282,6 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 			bird->detachFromParent();
 		}
 		break;
-	case '1':
-		if(pyramid1->getParent() == NULL ){
-			this->addChild(pyramid1);
-		} else {
-			pyramid1->detachFromParent();
-		}
-		break;
-	case '2':
-		if(pyramid2->getParent() == NULL ){
-			this->addChild(pyramid2);
-		} else {
-			pyramid2->detachFromParent();
-		}
-		break;
-	case '3':
-		if(pyramid3->getParent() == NULL ){
-			this->addChild(pyramid3);
-		} else {
-			pyramid3->detachFromParent();
-		}
-		break;
-	case '4':
-		if(pyramid4->getParent() == NULL ){
-			this->addChild(pyramid4);
-		} else {
-			pyramid4->detachFromParent();
-		}
-		break;
 	case '5':
 		if(floor->getParent() == NULL ){
 			this->addChild(floor);
@@ -390,14 +303,8 @@ GLuint FlappyBird::createViewMenu(){
 	GLuint menuId = glutCreateMenu(viewMenu);
 	// Specify menu items and their integer identifiers
 	glutAddMenuEntry("Default", 0);
-	glutAddMenuEntry("View 1", 1);
-	glutAddMenuEntry("View 2", 2);
-	glutAddMenuEntry("View 3", 3);
-	glutAddMenuEntry("View 4", 4);
-	glutAddMenuEntry("View 5", 5);
-	glutAddMenuEntry("View 6", 6);
-	glutAddMenuEntry("View 7", 7);
-
+	glutAddMenuEntry("Front",1);
+	glutAddMenuEntry("Free Form",2);
 	return menuId;
 }
 

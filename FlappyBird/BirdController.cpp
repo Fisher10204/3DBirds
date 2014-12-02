@@ -1,5 +1,6 @@
 #include "BirdController.h"
 
+
 BirdController::BirdController(
 	glm::vec3 velocity,
 	glm::vec3 position,
