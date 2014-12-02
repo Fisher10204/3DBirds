@@ -1,13 +1,40 @@
-﻿Build started 12/1/2014 4:01:15 PM.
-     1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/2/2014 3:25:40 PM.
+     1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt CWaves.cpp Framework.cpp LoadOAL.cpp SoundSource.cpp aldlist.cpp
-         Skipping... (no relevant changes detected)
-         aldlist.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt aldlist.cpp bitmap_class.cpp BuildShaderProgram.cpp BulletController.cpp Cone.cpp Controller.cpp Cube.cpp CWaves.cpp Cylinder.cpp Floor.cpp Floor2.cpp Framework.cpp glutBase.cpp GlutObject.cpp LoadOAL.cpp Material.cpp OpenGLApplicationBase.cpp OrbitController.cpp SharedGeneralLighting.cpp SharedProjectionAndViewing.cpp SoundSource.cpp SpaceShip.cpp Sphere.cpp SpinnerController.cpp textureCoordinates.cpp VisualObject.cpp Wall.cpp WayPointController.cpp
+         WayPointController.cpp
+         Wall.cpp
+         VisualObject.cpp
+         textureCoordinates.cpp
+         SpinnerController.cpp
+         Sphere.cpp
+         SpaceShip.cpp
          SoundSource.cpp
+         SharedProjectionAndViewing.cpp
+         SharedGeneralLighting.cpp
+         OrbitController.cpp
+         OpenGLApplicationBase.cpp
+         Material.cpp
          LoadOAL.cpp
+         GlutObject.cpp
+         glutBase.cpp
          Framework.cpp
+         Floor2.cpp
+         Floor.cpp
+         Cylinder.cpp
+         Generating Code...
+         Compiling...
          CWaves.cpp
+         Cube.cpp
+         Controller.cpp
+         Cone.cpp
+         BulletController.cpp
+         BuildShaderProgram.cpp
+         bitmap_class.cpp
+     1>c:\users\kuczmama\desktop\3dbirds\openglcse386\bitmap_class.cpp(75): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         aldlist.cpp
+         Generating Code...
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" /NOLOGO Debug\aldlist.obj
          Debug\bitmap_class.obj
@@ -81,8 +108,8 @@
          xram.h
                 36 file(s) copied.
                  1 file(s) copied.
-     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.56
+Time Elapsed 00:02:26.34

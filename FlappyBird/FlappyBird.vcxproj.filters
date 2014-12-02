@@ -33,6 +33,24 @@
     <Image Include="feather.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="dirt1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pipe1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pipe2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pipe3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sky1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sky2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pyramid.cpp">
@@ -48,6 +66,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WingController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,6 +90,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WingController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

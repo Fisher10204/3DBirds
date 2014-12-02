@@ -26,23 +26,29 @@
 #include "Constants.h"
 #define SPACEBAR 32
 
-
+static bool createdPipe = false;
 struct FlappyBird : public OpenGLApplicationBase{
+
+	// Read the files and create the OpenGL shader program. 
+	GLuint shaderProgram;
 
 	FlappyBird() : view(0), rotationX(0.0f), rotationY(0.0f), zTrans(-12.0f)
 	{
-		floor = new Floor2();
-
+		srand(NULL);
+		ShaderInfo shaders[] = { 
+			{ GL_VERTEX_SHADER, "pcVsUniViewProj.vert" }, 
+			{ GL_FRAGMENT_SHADER, "pfixed-function-shared-lighting-phong.frag"}, 
+			{ GL_NONE, NULL } // signals that there are no more shaders 
+		};
+		shaderProgram = BuildShaderProgram(shaders);
+		floor = new Floor2(20.0f);
 		bird = new Bird();
 		bird->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		bird->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
 		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
 		birdController = new BirdController();
 		bird->addController(birdController);
-
-		pipe = new Pipe();
-		pipe->addController(new PipeController(glm::vec3(0.0f, 0.0f, 5.0f)));
-		addChild(pipe);
+		pipes =  std::vector<VisualObject*>();
 		addChild(floor);
 		addChild(bird);
 		ambOn = false;
@@ -51,20 +57,14 @@ struct FlappyBird : public OpenGLApplicationBase{
 		spOn = false;
 		// Create array of ShaderInfo structs that specifies the vertex and 
 		// fragment shaders to be compiled and linked into a program. 
-		ShaderInfo shaders[] = { 
-			{ GL_VERTEX_SHADER, "pcVsUniViewProj.vert" }, 
-			{ GL_FRAGMENT_SHADER, "pfixed-function-shared-lighting-phong.frag"}, 
-			{ GL_NONE, NULL } // signals that there are no more shaders 
-		};
-		// Read the files and create the OpenGL shader program. 
-		GLuint shaderProgram = BuildShaderProgram(shaders);
+
 		projectionAndViewing.setUniformBlockForShader(shaderProgram);
 		generalLighting.setUniformBlockForShader( shaderProgram );
 		floor->setShader(shaderProgram);
 		bird->setShader(shaderProgram);
-		pipe->setShader(shaderProgram);
 		setupLighting(shaderProgram);
 
+		newPipeCounter = newPipeCounterMax;
 	} // end bachmaerLab8 constructor
 
 
@@ -161,8 +161,8 @@ struct FlappyBird : public OpenGLApplicationBase{
 			viewMatrix = glm::translate(glm::mat4(1.0f),
 				glm::vec3(0.0f, 0.0f, sideViewDistance))
 				* glm::rotate(glm::mat4(1.0f),
-								90.0f,
-								glm::vec3(0.0f,1.0f,0.0f));				
+				90.0f,
+				glm::vec3(0.0f,1.0f,0.0f));				
 			break;
 		case 1:
 			//front View
@@ -182,6 +182,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 	void KeyboardCB(unsigned char key, int x, int y);
 
 
+
 	void draw(){
 		GLuint windowWidth = glutGet(GLUT_WINDOW_WIDTH );
 		GLuint windowHeight= glutGet(GLUT_WINDOW_HEIGHT );
@@ -195,7 +196,62 @@ struct FlappyBird : public OpenGLApplicationBase{
 			0.1f, 100.f);
 		// Set the uniform block for the shaders
 		projectionAndViewing.setProjectionMatrix( projectionMatrix );
+		newPipeCounter++;
+
 		VisualObject::draw();
+		if(newPipeCounter >= newPipeCounterMax){
+			newPipeCounter = 0;
+			drawPipes();
+		}
+		deletePipes();
+
+	}
+
+	void deletePipes(){
+		for(std::vector<VisualObject*>::iterator it = pipes.begin(); it != pipes.end();){
+			if((*it)->getWorldPosition().z < -15.0f){
+				if((*it)->hasController()){
+					(*it)->removeAndDeleteController();
+				}
+				(*it)->detachFromParent();
+				it = pipes.erase(it);
+			} else {
+				++it;
+			}
+		}
+		/*if(pipes.at(0)->getWorldPosition().z < 0.0f){
+		if(pipes.at(0)->hasController()){
+		pipes.at(0)->removeAndDeleteController();
+		}
+		pipes.at(0)->detachFromParent();
+		//pipes.erase(pipes.begin());
+		}*/
+	}
+
+	void drawPipes(){
+		float pipeHeight=(float)(rand()%10);
+		float zDist=20.0f;
+		//Draw the top pipe
+		Pipe* topPipe = new Pipe();
+		topPipe->setShader(shaderProgram);
+		topPipe->addController(new PipeController(true, glm::vec3(0.0f, pipeHeight, zDist)));
+		topPipe->draw();
+		topPipe->initialize();
+		addChild(topPipe);
+
+
+		pipes.push_back(topPipe);
+
+		//Draw the bottom pipe
+		Pipe* bottomPipe = new Pipe();
+		bottomPipe->setShader(shaderProgram);
+		bottomPipe->addController(new PipeController(false, glm::vec3(0.0f, pipeHeight, zDist)));
+		bottomPipe->draw();
+		bottomPipe->initialize();
+		addChild(bottomPipe);
+
+
+		pipes.push_back(bottomPipe);
 	}
 
 private:
@@ -204,7 +260,6 @@ private:
 	float x, y, z;
 	float boardSize;
 	std::string direction;
-	VisualObject* pipe;
 
 protected:
 	GLuint view;
@@ -217,7 +272,11 @@ protected:
 	bool posOn;
 	bool spOn;
 	BirdController* birdController;
+	std::vector<VisualObject*> pipes;
+	int newPipeCounter;
 };
+
+
 
 void SpecialKeyboardCB(int Key, int x, int y){
 	switch (Key) {
@@ -245,7 +304,7 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 	switch(key){
 	case SPACEBAR:
 		birdController->velocity = glm::vec3(0.0f,10.0f,0.0f);
-		
+
 		break;
 	case 'w': case 'W':
 		zTrans++;
@@ -254,25 +313,25 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 		zTrans--;
 		break;
 	case 'a' : case 'A':
-		
+
 		ambOn = generalLighting.getEnabled( GL_LIGHT_ZERO );
 		ambOn = !ambOn;
 		generalLighting.setEnabled( GL_LIGHT_ZERO, ambOn );
 		break;
 	case 'd': case 'D':
-		
+
 		directOn = generalLighting.getEnabled( GL_LIGHT_ONE );
 		directOn = !directOn;
 		generalLighting.setEnabled( GL_LIGHT_ONE, directOn );
 		break;
 	case 'p': case 'P':
-		
+
 		posOn = generalLighting.getEnabled( GL_LIGHT_TWO );
 		posOn = !posOn;
 		generalLighting.setEnabled( GL_LIGHT_TWO, posOn );
 		break;
 	case 'l': case 'L':
-		
+
 		spOn = generalLighting.getEnabled( GL_LIGHT_THREE );
 		spOn = !spOn;
 		generalLighting.setEnabled( GL_LIGHT_THREE, spOn );

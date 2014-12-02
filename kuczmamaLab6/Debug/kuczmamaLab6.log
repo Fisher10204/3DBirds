@@ -1,10 +1,10 @@
-﻿Build started 11/24/2014 7:12:56 PM.
-     1>Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab6\kuczmamaLab6.vcxproj" on node 3 (Build target(s)).
+﻿Build started 12/2/2014 3:29:39 PM.
+     1>Project "C:\Users\kuczmama\Desktop\3DBirds\kuczmamaLab6\kuczmamaLab6.vcxproj" on node 3 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt kuczmamaLab6.cpp Pyramid.cpp
          Pyramid.cpp
          kuczmamaLab6.cpp
-     1>c:\users\jake mccanty\documents\classes\cse 386\3dbirds\kuczmamalab6\kuczmamalab6.cpp(200): error C2668: 'sqrt' : ambiguous call to overloaded function
+     1>c:\users\kuczmama\desktop\3dbirds\kuczmamalab6\kuczmamalab6.cpp(200): error C2668: 'sqrt' : ambiguous call to overloaded function
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\xtgmath.h(105): could be 'double sqrt<int>(_Ty)'
                  with
                  [
@@ -17,8 +17,8 @@
                  ]
                  while trying to match the argument list '(int)'
          Generating Code...
-     1>Done Building Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab6\kuczmamaLab6.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\kuczmamaLab6\kuczmamaLab6.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:19.32
+Time Elapsed 00:00:18.82

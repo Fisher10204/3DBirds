@@ -80,8 +80,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Desktop\eye.bmp" />
+    <Image Include="dirt1.bmp" />
     <Image Include="earth.bmp" />
     <Image Include="feather.bmp" />
+    <Image Include="pipe1.bmp" />
+    <Image Include="pipe2.bmp" />
+    <Image Include="pipe3.bmp" />
+    <Image Include="sky1.bmp" />
+    <Image Include="sky2.bmp" />
     <Image Include="test.bmp" />
     <Image Include="wall.bmp" />
     <Image Include="wood-Sphere.bmp" />
@@ -90,6 +96,8 @@
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="BirdController.cpp" />
     <ClCompile Include="FlappyBird.cpp" />
+    <ClCompile Include="Pipe.cpp" />
+    <ClCompile Include="PipeController.cpp" />
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="WingController.cpp" />
   </ItemGroup>
@@ -100,6 +108,9 @@
   <ItemGroup>
     <ClInclude Include="Bird.h" />
     <ClInclude Include="BirdController.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Pipe.h" />
+    <ClInclude Include="PipeController.h" />
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="WingController.h" />
   </ItemGroup>

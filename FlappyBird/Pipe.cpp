@@ -2,13 +2,16 @@
 
 #include "Cylinder.h"
 
-Pipe::Pipe(float bodyHeight,float bodyRadius ,float rimHeight,float rimRadius)
+Pipe::Pipe(float position,float bodyHeight,float bodyRadius ,float rimHeight,float rimRadius)
 	: VisualObject(  )
 {
 	this->bodyHeight = bodyHeight;
 	this->bodyRadius = bodyRadius;
 	this->rimHeight = rimHeight;
 	this->rimRadius = rimRadius;
+	this->position = position;
+
+
 	//the body of the pipe
 	VisualObject * body = new Cylinder(bodyHeight,bodyRadius);
 	body->fixedTransformation = 

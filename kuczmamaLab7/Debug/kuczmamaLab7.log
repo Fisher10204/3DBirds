@@ -1,10 +1,10 @@
-﻿Build started 11/24/2014 7:12:58 PM.
-     1>Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab7\kuczmamaLab7.vcxproj" on node 4 (Build target(s)).
+﻿Build started 12/2/2014 3:29:40 PM.
+     1>Project "C:\Users\kuczmama\Desktop\3DBirds\kuczmamaLab7\kuczmamaLab7.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt kuczmamaLab7.cpp Pyramid.cpp
          Pyramid.cpp
          kuczmamaLab7.cpp
-     1>c:\users\jake mccanty\documents\classes\cse 386\3dbirds\kuczmamalab7\kuczmamalab7.cpp(137): error C2668: 'sqrt' : ambiguous call to overloaded function
+     1>c:\users\kuczmama\desktop\3dbirds\kuczmamalab7\kuczmamalab7.cpp(137): error C2668: 'sqrt' : ambiguous call to overloaded function
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\xtgmath.h(105): could be 'double sqrt<int>(_Ty)'
                  with
                  [
@@ -16,12 +16,12 @@
                      genType=int
                  ]
                  while trying to match the argument list '(int)'
-     1>c:\users\jake mccanty\documents\classes\cse 386\3dbirds\kuczmamalab7\kuczmamalab7.cpp(158): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
-     1>c:\users\jake mccanty\documents\classes\cse 386\3dbirds\kuczmamalab7\kuczmamalab7.cpp(168): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
-     1>c:\users\jake mccanty\documents\classes\cse 386\3dbirds\kuczmamalab7\kuczmamalab7.cpp(168): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
+     1>c:\users\kuczmama\desktop\3dbirds\kuczmamalab7\kuczmamalab7.cpp(158): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
+     1>c:\users\kuczmama\desktop\3dbirds\kuczmamalab7\kuczmamalab7.cpp(168): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
+     1>c:\users\kuczmama\desktop\3dbirds\kuczmamalab7\kuczmamalab7.cpp(168): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
          Generating Code...
-     1>Done Building Project "C:\Users\Jake McCanty\Documents\Classes\CSE 386\3DBirds\kuczmamaLab7\kuczmamaLab7.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\kuczmama\Desktop\3DBirds\kuczmamaLab7\kuczmamaLab7.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:18.26
+Time Elapsed 00:00:18.77
