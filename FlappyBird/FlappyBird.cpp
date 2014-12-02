@@ -10,6 +10,7 @@
 #include "WayPointController.h"
 #include <cmath>
 #include <math.h>
+#include "PipeController.h"
 #include "Floor2.h"
 #include "Sphere.h"
 #include "Cylinder.h"
@@ -40,6 +41,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bird->addController(birdController);
 
 		pipe = new Pipe();
+		pipe->addController(new PipeController(glm::vec3(0.0f, 0.0f, 5.0f)));
 		addChild(pipe);
 		addChild(floor);
 		addChild(bird);
