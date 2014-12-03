@@ -209,19 +209,16 @@ struct FlappyBird : public OpenGLApplicationBase{
 	}
 
 	void hasCollision(std::vector<VisualObject*>::iterator it){
-		Pipe pipe = (*it);
-		//for(std::vector<VisualObject*>::iterator it = pipes.begin(); it != pipes.end();++it){
-		//	pipe = (Pipe*)(*it);
-		if(//pipe->getWorldPosition().z < 3.0f  &&
-			//pipe->getWorldPosition().z > -3.0f && 
-				pipe.getWorldPosition().z != 0 &&
-				(bird->getWorldPosition().y + 1 > (pipe.isTop && pipe.getWorldPosition().y)
-				||
-				(bird->getWorldPosition().y - 1 < (pipe.isTop && pipe.getWorldPosition().y)))
-				){
-					cout << "collision!!" << endl;
+		Pipe &pipe = *reinterpret_cast<Pipe*>(*it);
+		if(pipe.getWorldPosition().z != 0 &&
+			(pipe.isTop && (bird->getWorldPosition().y + 1) > pipe.getWorldPosition().y)
+			||
+			(!pipe.isTop && (bird->getWorldPosition().y - 1) < pipe.getWorldPosition().y)
+			){
+				cout << "collision!!" << endl;
+		}else {
+			cout << "No collision" << endl;
 		}
-		//}
 	}
 
 	void deletePipes(){
