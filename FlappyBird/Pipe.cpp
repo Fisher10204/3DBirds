@@ -2,7 +2,7 @@
 
 #include "Cylinder.h"
 
-Pipe::Pipe(float position,float bodyHeight,float bodyRadius ,float rimHeight,float rimRadius)
+Pipe::Pipe(bool isTop, float position, float bodyHeight,float bodyRadius ,float rimHeight,float rimRadius)
 	: VisualObject(  )
 {
 	this->bodyHeight = bodyHeight;
@@ -10,6 +10,7 @@ Pipe::Pipe(float position,float bodyHeight,float bodyRadius ,float rimHeight,flo
 	this->rimHeight = rimHeight;
 	this->rimRadius = rimRadius;
 	this->position = position;
+	this->isTop = isTop;
 
 
 	//the body of the pipe

@@ -24,6 +24,7 @@
 #include "BirdController.h"
 #include "Pipe.h"
 #include "Constants.h"
+#include <iterator>
 #define SPACEBAR 32
 
 static bool createdPipe = false;
@@ -207,8 +208,28 @@ struct FlappyBird : public OpenGLApplicationBase{
 
 	}
 
+	void hasCollision(std::vector<VisualObject*>::iterator it){
+		Pipe pipe = (*it);
+		//for(std::vector<VisualObject*>::iterator it = pipes.begin(); it != pipes.end();++it){
+		//	pipe = (Pipe*)(*it);
+		if(//pipe->getWorldPosition().z < 3.0f  &&
+			//pipe->getWorldPosition().z > -3.0f && 
+				pipe.getWorldPosition().z != 0 &&
+				(bird->getWorldPosition().y + 1 > (pipe.isTop && pipe.getWorldPosition().y)
+				||
+				(bird->getWorldPosition().y - 1 < (pipe.isTop && pipe.getWorldPosition().y)))
+				){
+					cout << "collision!!" << endl;
+		}
+		//}
+	}
+
 	void deletePipes(){
 		for(std::vector<VisualObject*>::iterator it = pipes.begin(); it != pipes.end();){
+			if((*it)->getWorldPosition().z < 3.0f  &&
+				(*it)->getWorldPosition().z > -3.0f){
+					hasCollision(it);
+			}
 			if((*it)->getWorldPosition().z < -15.0f){
 				if((*it)->hasController()){
 					(*it)->removeAndDeleteController();
@@ -219,20 +240,14 @@ struct FlappyBird : public OpenGLApplicationBase{
 				++it;
 			}
 		}
-		/*if(pipes.at(0)->getWorldPosition().z < 0.0f){
-		if(pipes.at(0)->hasController()){
-		pipes.at(0)->removeAndDeleteController();
-		}
-		pipes.at(0)->detachFromParent();
-		//pipes.erase(pipes.begin());
-		}*/
+
 	}
 
 	void drawPipes(){
 		float pipeHeight=(float)(rand()%10);
 		float zDist=20.0f;
 		//Draw the top pipe
-		Pipe* topPipe = new Pipe();
+		Pipe* topPipe = new Pipe(true);
 		topPipe->setShader(shaderProgram);
 		topPipe->addController(new PipeController(true, glm::vec3(0.0f, pipeHeight, zDist)));
 		topPipe->draw();
@@ -243,7 +258,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		pipes.push_back(topPipe);
 
 		//Draw the bottom pipe
-		Pipe* bottomPipe = new Pipe();
+		Pipe* bottomPipe = new Pipe(false);
 		bottomPipe->setShader(shaderProgram);
 		bottomPipe->addController(new PipeController(false, glm::vec3(0.0f, pipeHeight, zDist)));
 		bottomPipe->draw();
