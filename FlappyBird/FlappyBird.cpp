@@ -214,9 +214,20 @@ struct FlappyBird : public OpenGLApplicationBase{
 			(pipe.isTop && (bird->getWorldPosition().y + 1) > pipe.getWorldPosition().y)
 			||
 			(!pipe.isTop && (bird->getWorldPosition().y - 1) < pipe.getWorldPosition().y)
-			){
+			){/*
+				Next Steps:
+				1. Remove all controllers from the scene and stop adding pipes to "end" the game
+				2. Display a score
+				3. Display the press r to reset message
+				4. play a whacking sound
+			*/
 				cout << "collision!!" << endl;
 		}else {
+			// increment some kind of score, we might want to add a "scored" variable to the pipes
+			// to ensure that a pipe is only scored once and to increment a score by only 1 we should add
+			// some kind of counter that either adds 1 to the score after it has not collided with two different "scored pipes"
+			// reset this variable after incrementing the score, can increment when we flip a scored from false to true
+			// when we increment the score we can also play a bing sound
 			cout << "No collision" << endl;
 		}
 	}
