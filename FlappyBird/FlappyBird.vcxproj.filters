@@ -105,4 +105,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="flap.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="hit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="score.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

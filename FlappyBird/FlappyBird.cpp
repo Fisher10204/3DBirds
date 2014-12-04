@@ -26,6 +26,7 @@
 #include "Constants.h"
 #include <iterator>
 #include "font.h"
+#include "SoundSource.h"
 #define SPACEBAR 32
 
 
@@ -74,7 +75,9 @@ struct FlappyBird : public OpenGLApplicationBase{
 		floor->setShader(shaderProgram);
 		bird->setShader(shaderProgram);
 		setupLighting(shaderProgram);
-
+		scoreSound = new SoundSource("score.wav");
+		hitSound = new SoundSource("hit.wav");
+		flapSound = new SoundSource("flap.wav");
 		newPipeCounter = newPipeCounterMax;
 	} // end bachmaerLab8 constructor
 
@@ -252,16 +255,14 @@ struct FlappyBird : public OpenGLApplicationBase{
 			   */
 				//End game method
 				endGame();
-				cout << "collision!!" << endl;
 		} 
-		cout << "position " << pipe.position << endl;
 		if(pipe.position < .032f && pipe.position > -0.032f){
 			//if(pipe.getWorldPosition().z == 0){
 			//only score every other pipe
 			isScoring++;
 			if(isScoring % 2 == 0){
 				score++;
-				cout << "score " <<  score << endl;
+				scoreSound->play();
 			}
 		}
 	}
@@ -270,6 +271,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 	* Handle when the game ends
 	*/
 	void endGame(){
+		hitSound->play();
 		isGameOver = true;
 		//make the pipes stop moving
 		for(std::vector<Pipe*>::iterator it = pipes.begin(); it != pipes.end();++it){
@@ -363,6 +365,7 @@ protected:
 	GLfloat rotationX, rotationY;
 	GLfloat zTrans;
 	SharedGeneralLighting generalLighting;
+	SoundSource *flapSound, *scoreSound, *hitSound;
 	bool ambOn;
 	bool directOn;
 	bool posOn;
@@ -400,6 +403,7 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 	switch(key){
 	case SPACEBAR:
 		if(!isGameOver){
+			flapSound->play();
 			birdController->velocity = glm::vec3(0.0f,10.0f,0.0f);
 		}
 		break;
