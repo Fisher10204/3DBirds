@@ -1,6 +1,10 @@
-﻿Build started 12/4/2014 1:46:47 PM.
+﻿Build started 12/4/2014 5:15:54 PM.
      1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Cylinder.cpp
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+         Cylinder.cpp
+       Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\kuczmama\Desktop\3DBirds\Debug\OpenGlCse386.lib" /NOLOGO Debug\aldlist.obj
          Debug\bitmap_class.obj
          Debug\BuildShaderProgram.obj
@@ -77,4 +81,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.39
+Time Elapsed 00:00:03.23

@@ -282,6 +282,10 @@ void Cylinder::draw()
 
 	// Draw body
 	glBindVertexArray(vertexArrayObject);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
     glDrawElements(GL_TRIANGLES, bodyIndicesCount, GL_UNSIGNED_INT, 0);
 
 	// Draw bottom

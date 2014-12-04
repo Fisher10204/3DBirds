@@ -164,6 +164,8 @@ void main()
 	for (int i = 0; i < MaxLights; i++)  {
 	
 		FragColor += calcLight( lights[i], texturedMaterial );
+
+		FragColor.a = object.diffuseMat.a;
 	}
 
 }

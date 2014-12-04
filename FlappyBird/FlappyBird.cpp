@@ -288,7 +288,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 				(*it)->position > -3.0f){
 					hasCollision(it);
 			}
-			if((*it)->getWorldPosition().z < -15.0f){
+			if((*it)->getWorldPosition().z < -20.0f){
 				if((*it)->hasController()){
 					(*it)->removeAndDeleteController();
 				}
@@ -302,14 +302,14 @@ struct FlappyBird : public OpenGLApplicationBase{
 	}
 
 	void drawPipes(){
-		bool isTransparent = true;
-		//bool isTransparent = (rand()%10 == 0);
+		//make every 10th pipe at random transparent
+		bool isTransparent = (rand()%10 == 0);
 		float pipeHeight=(float)(rand()%10);
-		float zDist=20.0f;
+		float zDist=25.0f;
 		//Draw the top pipe
 		Pipe* topPipe;
 		if(isTransparent){
-			topPipe = new Pipe(true,glm::vec4(0.0f,0.0f,0.0f,0.5f));
+			topPipe = new Pipe(true,glm::vec4(0.1f,0.1f,0.8f,0.1f));
 		} else {
 			topPipe = new Pipe(true);
 		}
@@ -320,7 +320,12 @@ struct FlappyBird : public OpenGLApplicationBase{
 		addChild(topPipe);
 		pipes.push_back(topPipe);
 		//Draw the bottom pipe
-		Pipe* bottomPipe = new Pipe(false);
+		Pipe* bottomPipe;
+		if(isTransparent){
+			bottomPipe = new Pipe(false,glm::vec4(0.1f,0.1f,0.8f,0.1f));
+		} else {
+			bottomPipe = new Pipe(false);
+		}
 		bottomPipe->addController(new PipeController(false, glm::vec3(0.0f, pipeHeight, zDist)));
 		bottomPipe->setShader(shaderProgram);
 		bottomPipe->draw();

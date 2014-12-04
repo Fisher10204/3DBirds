@@ -22,11 +22,10 @@ Pipe::Pipe(bool isTop,glm::vec4 color, float position, float bodyHeight,float bo
 		-90.0f,
 		glm::vec3(1.0f,0.0f,0.0f))*
 		translate(mat4(1.0f), vec3(0.0f, 0.0f, rimHeight));
-	
-	//body->material.setAmbientAndDiffuseMat(vec4( 0.1f, 0.1, 0.9f, 1.0f)); 
-	//body->material.setTextureMapped(true); 
-	//body->material.setupTexture("pipe1.bmp");
-	body->material.setAmbientAndDiffuseMat(vec4( 0.1f, 0.1, 0.9f, .3f)); 
+
+	body->material.setAmbientAndDiffuseMat(color); 
+	body->material.setTextureMapped(true); 
+	body->material.setupTexture("pipe1.bmp");
 	this->addChild( body );
 
 	//rim of the pipe
@@ -35,10 +34,10 @@ Pipe::Pipe(bool isTop,glm::vec4 color, float position, float bodyHeight,float bo
 		glm::mat4(1.0f),
 		-90.0f,
 		glm::vec3(1.0f,0.0f,0.0f));
-	
-	//rim->material.setTextureMapped(true); 
-	//rim->material.setupTexture("pipe1.bmp");
+
 	rim->material.setAmbientAndDiffuseMat(color); 
+	rim->material.setTextureMapped(true); 
+	rim->material.setupTexture("pipe1.bmp");
 	this->addChild( rim );
 
 } // end Pipe constructor
