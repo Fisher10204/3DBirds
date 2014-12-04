@@ -109,6 +109,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="BirdController.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="font.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="PipeController.h" />
     <ClInclude Include="Pyramid.h" />

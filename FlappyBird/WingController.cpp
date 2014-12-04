@@ -1,5 +1,6 @@
 #include "WingController.h"
 
+
 //if left=1 then this is the left wing and we need to invert the changes
 WingController::WingController(float c, int left)
 {

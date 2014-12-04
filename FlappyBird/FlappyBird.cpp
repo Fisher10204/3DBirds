@@ -25,11 +25,19 @@
 #include "Pipe.h"
 #include "Constants.h"
 #include <iterator>
+#include "font.h"
 #define SPACEBAR 32
 
-static bool createdPipe = false;
-static int score = 0;
-static int isScoring = 0;
+
+bool createdPipe = false;
+int score = 0;
+int maxScore = 0;
+int isScoring = 0;
+bool isGameOver = false;
+int highScore = 0;
+
+
+
 struct FlappyBird : public OpenGLApplicationBase{
 
 	// Read the files and create the OpenGL shader program. 
@@ -202,12 +210,26 @@ struct FlappyBird : public OpenGLApplicationBase{
 		newPipeCounter++;
 
 		VisualObject::draw();
- 		if(newPipeCounter >= newPipeCounterMax){
-			newPipeCounter = 0;
-			drawPipes();
+		if(!isGameOver){
+			if(newPipeCounter >= newPipeCounterMax){
+				newPipeCounter = 0;
+				drawPipes();
+			}
+			deletePipes();
 		}
-		deletePipes();
+		setText();
+	}
 
+	void setText(){
+		if(!isGameOver){
+			screenTextOutput (glutGet(GLUT_WINDOW_WIDTH )/2, glutGet(GLUT_WINDOW_HEIGHT )*8/10, std::to_string(score), vec4(1.0f, 1.0f, 1.0f, 1.0f), GLUT_BITMAP_TIMES_ROMAN_24);
+		} else {
+			screenTextOutput (glutGet(GLUT_WINDOW_WIDTH )/2,
+				glutGet(GLUT_WINDOW_HEIGHT )*8/10,
+				"Game Over\nHit 'R' to restart\nYour Score is: " + std::to_string(score) + "\nYour Highscore is: " + std::to_string(highScore),
+				vec4(1.0f, 1.0f, 1.0f, 1.0f),
+				GLUT_BITMAP_TIMES_ROMAN_24);
+		}
 	}
 
 	// increment some kind of score, we might want to add a "scored" variable to the pipes
@@ -222,23 +244,41 @@ struct FlappyBird : public OpenGLApplicationBase{
 			||
 			(!pipe.isTop && (bird->getWorldPosition().y - 1) < pipe.getWorldPosition().y)
 			)){/*
-			  Next Steps:
-			  1. Remove all controllers from the scene and stop adding pipes to "end" the game
-			  2. Display a score
-			  3. Display the press r to reset message
-			  4. play a whacking sound
-			  */
+			   Next Steps:
+			   1. Remove all controllers from the scene and stop adding pipes to "end" the game
+			   2. Display a score
+			   3. Display the press r to reset message
+			   4. play a whacking sound
+			   */
 				//End game method
+				endGame();
 				cout << "collision!!" << endl;
 		} 
-		if(pipe.position == 0){
-		//if(pipe.getWorldPosition().z == 0){
+		cout << "position " << pipe.position << endl;
+		if(pipe.position < .032f && pipe.position > -0.032f){
+			//if(pipe.getWorldPosition().z == 0){
 			//only score every other pipe
 			isScoring++;
 			if(isScoring % 2 == 0){
 				score++;
 				cout << "score " <<  score << endl;
 			}
+		}
+	}
+
+	/**
+	* Handle when the game ends
+	*/
+	void endGame(){
+		isGameOver = true;
+		//make the pipes stop moving
+		for(std::vector<Pipe*>::iterator it = pipes.begin(); it != pipes.end();++it){
+			if((*it)->hasController()){
+				(*it)->removeAndDeleteController();
+			}
+		}
+		if(score > highScore){
+			highScore = score;
 		}
 	}
 
@@ -262,10 +302,17 @@ struct FlappyBird : public OpenGLApplicationBase{
 	}
 
 	void drawPipes(){
+		bool isTransparent = true;
+		//bool isTransparent = (rand()%10 == 0);
 		float pipeHeight=(float)(rand()%10);
 		float zDist=20.0f;
 		//Draw the top pipe
-		Pipe* topPipe = new Pipe(true);
+		Pipe* topPipe;
+		if(isTransparent){
+			topPipe = new Pipe(true,glm::vec4(0.0f,0.0f,0.0f,0.5f));
+		} else {
+			topPipe = new Pipe(true);
+		}
 		topPipe->addController(new PipeController(true, glm::vec3(0.0f, pipeHeight, zDist)));
 		topPipe->setShader(shaderProgram);
 		topPipe->draw();
@@ -280,6 +327,22 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bottomPipe->initialize();
 		addChild(bottomPipe);
 		pipes.push_back(bottomPipe);
+	}
+
+	void resetGame(){
+		score = 0;
+		isGameOver = false;
+		for(std::vector<Pipe*>::iterator it = pipes.begin(); it != pipes.end();){
+			if((*it)->hasController()) {
+				(*it)->removeAndDeleteController();
+			}
+			(*it)->detachFromParent();
+			if(!pipes.empty()){
+				it = pipes.erase(it);
+			} else {
+				++it;
+			}
+		}
 	}
 
 private:
@@ -331,12 +394,17 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 
 	switch(key){
 	case SPACEBAR:
-		birdController->velocity = glm::vec3(0.0f,10.0f,0.0f);
-
+		if(!isGameOver){
+			birdController->velocity = glm::vec3(0.0f,10.0f,0.0f);
+		}
 		break;
 	case 'w': case 'W':
 		zTrans++;
 		break;
+	case 'r': case 'R':
+		if(isGameOver){
+			resetGame();
+		}
 	case 's': case 'S':
 		zTrans--;
 		break;
