@@ -1,4 +1,4 @@
-﻿Build started 12/4/2014 5:26:24 PM.
+﻿Build started 12/4/2014 5:53:14 PM.
      1>Project "C:\Users\kuczmama\Desktop\3DBirds\OpenGlCse386\OpenGlCse386.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt aldlist.cpp bitmap_class.cpp BuildShaderProgram.cpp BulletController.cpp Cone.cpp Controller.cpp Cube.cpp CWaves.cpp Cylinder.cpp Floor.cpp Floor2.cpp Framework.cpp glutBase.cpp GlutObject.cpp LoadOAL.cpp Material.cpp OpenGLApplicationBase.cpp OrbitController.cpp SharedGeneralLighting.cpp SharedProjectionAndViewing.cpp SoundSource.cpp SpaceShip.cpp Sphere.cpp SpinnerController.cpp textureCoordinates.cpp VisualObject.cpp Wall.cpp WayPointController.cpp
@@ -112,4 +112,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:51.49
+Time Elapsed 00:00:51.88
