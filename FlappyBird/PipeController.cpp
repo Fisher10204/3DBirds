@@ -1,5 +1,5 @@
 #include "PipeController.h"
-
+#include "Pipe.h"
 
 PipeController::PipeController( bool top, glm::vec3 position, GLfloat speed){
 	this->position = position;
@@ -16,4 +16,5 @@ void PipeController::update(float elapsedTimeSeconds){
 	}else{
 		target->modelMatrix = glm::translate(glm::mat4(1.0f), position);
 	}
+	((Pipe*)target)->position = position.z;
 }

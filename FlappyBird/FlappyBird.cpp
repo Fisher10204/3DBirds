@@ -28,6 +28,8 @@
 #define SPACEBAR 32
 
 static bool createdPipe = false;
+static int score = 0;
+static int isScoring = 0;
 struct FlappyBird : public OpenGLApplicationBase{
 
 	// Read the files and create the OpenGL shader program. 
@@ -49,7 +51,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		bird->fixedTransformation = glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,0.0f,0.0f));
 		birdController = new BirdController();
 		bird->addController(birdController);
-		pipes =  std::vector<VisualObject*>();
+		pipes =  std::vector<Pipe*>();
 		addChild(floor);
 		addChild(bird);
 		ambOn = false;
@@ -200,7 +202,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 		newPipeCounter++;
 
 		VisualObject::draw();
-		if(newPipeCounter >= newPipeCounterMax){
+ 		if(newPipeCounter >= newPipeCounterMax){
 			newPipeCounter = 0;
 			drawPipes();
 		}
@@ -208,34 +210,42 @@ struct FlappyBird : public OpenGLApplicationBase{
 
 	}
 
-	void hasCollision(std::vector<VisualObject*>::iterator it){
+	// increment some kind of score, we might want to add a "scored" variable to the pipes
+	// to ensure that a pipe is only scored once and to increment a score by only 1 we should add
+	// some kind of counter that either adds 1 to the score after it has not collided with two different "scored pipes"
+	// reset this variable after incrementing the score, can increment when we flip a scored from false to true
+	// when we increment the score we can also play a bing sound
+	void hasCollision(std::vector<Pipe*>::iterator it){
 		Pipe &pipe = *reinterpret_cast<Pipe*>(*it);
-		if(pipe.getWorldPosition().z != 0 &&
-			(pipe.isTop && (bird->getWorldPosition().y + 1) > pipe.getWorldPosition().y)
+		if(pipe.position != 0 &&
+			((pipe.isTop && (bird->getWorldPosition().y + 1) > pipe.getWorldPosition().y)
 			||
 			(!pipe.isTop && (bird->getWorldPosition().y - 1) < pipe.getWorldPosition().y)
-			){/*
-				Next Steps:
-				1. Remove all controllers from the scene and stop adding pipes to "end" the game
-				2. Display a score
-				3. Display the press r to reset message
-				4. play a whacking sound
-			*/
+			)){/*
+			  Next Steps:
+			  1. Remove all controllers from the scene and stop adding pipes to "end" the game
+			  2. Display a score
+			  3. Display the press r to reset message
+			  4. play a whacking sound
+			  */
+				//End game method
 				cout << "collision!!" << endl;
-		}else {
-			// increment some kind of score, we might want to add a "scored" variable to the pipes
-			// to ensure that a pipe is only scored once and to increment a score by only 1 we should add
-			// some kind of counter that either adds 1 to the score after it has not collided with two different "scored pipes"
-			// reset this variable after incrementing the score, can increment when we flip a scored from false to true
-			// when we increment the score we can also play a bing sound
-			cout << "No collision" << endl;
+		} 
+		if(pipe.position == 0){
+		//if(pipe.getWorldPosition().z == 0){
+			//only score every other pipe
+			isScoring++;
+			if(isScoring % 2 == 0){
+				score++;
+				cout << "score " <<  score << endl;
+			}
 		}
 	}
 
 	void deletePipes(){
-		for(std::vector<VisualObject*>::iterator it = pipes.begin(); it != pipes.end();){
-			if((*it)->getWorldPosition().z < 3.0f  &&
-				(*it)->getWorldPosition().z > -3.0f){
+		for(std::vector<Pipe*>::iterator it = pipes.begin(); it != pipes.end();){
+			if((*it)->position < 3.0f  &&
+				(*it)->position > -3.0f){
 					hasCollision(it);
 			}
 			if((*it)->getWorldPosition().z < -15.0f){
@@ -256,24 +266,19 @@ struct FlappyBird : public OpenGLApplicationBase{
 		float zDist=20.0f;
 		//Draw the top pipe
 		Pipe* topPipe = new Pipe(true);
-		topPipe->setShader(shaderProgram);
 		topPipe->addController(new PipeController(true, glm::vec3(0.0f, pipeHeight, zDist)));
+		topPipe->setShader(shaderProgram);
 		topPipe->draw();
 		topPipe->initialize();
 		addChild(topPipe);
-
-
 		pipes.push_back(topPipe);
-
 		//Draw the bottom pipe
 		Pipe* bottomPipe = new Pipe(false);
-		bottomPipe->setShader(shaderProgram);
 		bottomPipe->addController(new PipeController(false, glm::vec3(0.0f, pipeHeight, zDist)));
+		bottomPipe->setShader(shaderProgram);
 		bottomPipe->draw();
 		bottomPipe->initialize();
 		addChild(bottomPipe);
-
-
 		pipes.push_back(bottomPipe);
 	}
 
@@ -295,7 +300,7 @@ protected:
 	bool posOn;
 	bool spOn;
 	BirdController* birdController;
-	std::vector<VisualObject*> pipes;
+	std::vector<Pipe*> pipes;
 	int newPipeCounter;
 };
 
