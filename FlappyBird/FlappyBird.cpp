@@ -53,7 +53,7 @@ struct FlappyBird : public OpenGLApplicationBase{
 			{ GL_NONE, NULL } // signals that there are no more shaders 
 		};
 		shaderProgram = BuildShaderProgram(shaders);
-		floor = new Floor2(20.0f);
+		floor = new Floor2(60.0f);
 		bird = new Bird();
 		bird->material.setAmbientAndDiffuseMat(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		bird->material.setEmissiveMat(glm::vec4(0.2f, 0.0f, 0.0f, 1.0f));
@@ -78,6 +78,9 @@ struct FlappyBird : public OpenGLApplicationBase{
 		scoreSound = new SoundSource("score.wav");
 		hitSound = new SoundSource("hit.wav");
 		flapSound = new SoundSource("flap.wav");
+		bgMusic = new SoundSource("Population99.wav");
+		bgMusic->setLooping(true);
+		bgMusic->play();
 		newPipeCounter = newPipeCounterMax;
 	} // end bachmaerLab8 constructor
 
@@ -366,6 +369,7 @@ protected:
 	GLfloat zTrans;
 	SharedGeneralLighting generalLighting;
 	SoundSource *flapSound, *scoreSound, *hitSound;
+	SoundSource* bgMusic; 
 	bool ambOn;
 	bool directOn;
 	bool posOn;
@@ -416,6 +420,12 @@ void FlappyBird::KeyboardCB(unsigned char key, int x, int y){
 		}
 	case 's': case 'S':
 		zTrans--;
+		break;
+	case 'm': case 'M':
+		if(bgMusic->isPlaying())
+			bgMusic->stop();
+		else
+			bgMusic->play();
 		break;
 	case 'a' : case 'A':
 

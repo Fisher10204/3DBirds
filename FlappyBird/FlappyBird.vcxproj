@@ -118,6 +118,7 @@
   <ItemGroup>
     <Media Include="flap.wav" />
     <Media Include="hit.wav" />
+    <Media Include="Population99.wav" />
     <Media Include="score.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
